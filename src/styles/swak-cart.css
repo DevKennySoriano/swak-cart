@@ -5,10 +5,7 @@
 body {
   margin: 0;
   font-family: 'Manrope', sans-serif;
-  background:
-    radial-gradient(circle at 15% 15%, rgba(255, 190, 92, 0.26), transparent 36%),
-    radial-gradient(circle at 85% 0%, rgba(64, 184, 140, 0.28), transparent 38%),
-    linear-gradient(145deg, #fbf8f2 0%, #f3fbf8 42%, #f8fff7 100%);
+  background: #f7fbf9;
   color: #17352c;
 }
 
@@ -20,7 +17,7 @@ body {
 }
 
 .page-header {
-  background: linear-gradient(135deg, #1f7a63 0%, #0f5f4b 100%);
+  background: #14644f;
   color: #f8fff8;
   border-radius: 22px;
   padding: 1.25rem 1.35rem;
@@ -96,6 +93,13 @@ h2 {
   font-size: 1rem;
 }
 
+.metric-desc {
+  margin: -0.25rem 0 0.6rem;
+  color: #456f63;
+  font-size: 0.82rem;
+  line-height: 1.35;
+}
+
 .value {
   margin: 0;
   font-size: clamp(1.1rem, 2.8vw, 1.6rem);
@@ -162,8 +166,12 @@ button:focus {
 
 .progress-fill {
   height: 100%;
-  background: linear-gradient(90deg, #f6ab44 0%, #2a9b7e 100%);
+  background: #2a9b7e;
   transition: width 220ms ease;
+}
+
+.progress-fill.over-budget {
+  background: #c33e2f;
 }
 
 .alert {
@@ -191,6 +199,14 @@ button {
   border-radius: 10px;
   padding: 0.55rem 0.8rem;
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+button i {
+  font-size: 0.86em;
 }
 
 .primary-btn,
@@ -221,7 +237,17 @@ button {
   border: 1px solid #cce6de;
 }
 
-.category-chip span {
+.chip-label {
+  line-height: 1.1;
+}
+
+.category-chip i {
+  width: 0.95rem;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.category-chip .chip-count {
   background: #d8eee6;
   border-radius: 999px;
   padding: 0.05rem 0.44rem;
@@ -235,7 +261,7 @@ button {
   border-color: transparent;
 }
 
-.category-chip.active span {
+.category-chip.active .chip-count {
   background: rgba(255, 255, 255, 0.22);
   color: #fff;
 }
@@ -670,15 +696,15 @@ button {
 }
 
 .toast-success {
-  background: linear-gradient(135deg, #1e7b64 0%, #14644f 100%);
+  background: #1e7b64;
 }
 
 .toast-info {
-  background: linear-gradient(135deg, #2f6caa 0%, #27578a 100%);
+  background: #2f6caa;
 }
 
 .toast-warning {
-  background: linear-gradient(135deg, #d3662f 0%, #b84522 100%);
+  background: #d3662f;
 }
 .sr-only {
   position: absolute;

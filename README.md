@@ -25,6 +25,9 @@ The application enables users to:
 * 💰 **Real-Time Budget Tracking** – Live spending and remaining budget calculations
 * 📊 **Category Breakdown** – View spending totals by product category
 * 🎨 **Modal & Toast Notifications** – SweetAlert2-powered confirmations and feedback
+* 🧾 **Receipt Preview & PDF Export** – Preview before completion, then download a print-friendly receipt
+* 🖨️ **Print-Friendly Receipt Layout** – Black-and-white standard format with item count, Sub-total, Discount, VAT/TAX, and Total
+* ✅ **Smart Completion Rules** – Complete Cart is disabled when over budget or when cart is empty
 * ✨ **Smooth User Experience** – Professional animations and clean UI
 * 🖼️ **Product Images** – Real product images with fallback placeholders
 * 🔄 **Editable Cart** – Modify prices and quantities on the fly
@@ -97,6 +100,13 @@ The app will be available at `http://localhost:5173` by default.
 3. Click **Remove** to delete items
 4. Click **Done** to finish editing
 
+### Completing & Downloading Receipt
+1. Click **Complete Cart** (enabled only when cart is not over budget)
+2. Confirm to open the receipt preview
+3. Review the receipt in the preview modal
+4. Click **Print & Complete** to download the PDF and complete the cart
+5. A confirmation modal appears after completion
+
 ### Viewing Spending Breakdown
 * Budget Usage bar shows your spending percentage
 * Category Totals section displays spending by product type
@@ -109,6 +119,8 @@ The app will be available at `http://localhost:5173` by default.
 * **Vue 3** – Modern reactive UI framework
 * **Vite** – Lightning-fast build tool and dev server
 * **SweetAlert2** – Beautiful modals and notifications
+* **jsPDF** – Client-side PDF generation
+* **jspdf-autotable** – Structured table generation for receipts
 * **CSS3** – Responsive design with flexbox and grid
 * **JavaScript (ES6+)** – Composition API for state management
 

@@ -25,6 +25,27 @@ const {
   updateQty,
   utilization
 } = useSwakCart()
+
+function categoryIcon(label) {
+  const iconMap = {
+    All: 'fa-table-cells-large',
+    'Rice & Carbohydrates': 'fa-wheat-awn',
+    'Meat & Poultry': 'fa-drumstick-bite',
+    'Fish & Seafood': 'fa-fish',
+    'Eggs & Dairy': 'fa-egg',
+    Vegetables: 'fa-seedling',
+    Fruits: 'fa-apple-whole',
+    'Canned & Packaged Goods': 'fa-box',
+    'Pantry Essentials': 'fa-jar',
+    'Condiments & Seasonings': 'fa-mortar-pestle',
+    Beverages: 'fa-mug-hot',
+    Snacks: 'fa-cookie-bite',
+    'Household Supplies': 'fa-pump-soap',
+    'Personal Care': 'fa-soap'
+  }
+
+  return iconMap[label] || 'fa-tag'
+}
 </script>
 
 <template>
@@ -48,6 +69,7 @@ const {
             <small>{{ filteredCatalog.length }} shown</small>
           </div>
           <button type="button" class="edit-btn" @click="openManualAddModal">
+            <i class="fa-solid fa-circle-plus" aria-hidden="true"></i>
             Add Manually
           </button>
         </div>
@@ -68,8 +90,9 @@ const {
               :class="['category-chip', { active: activeCategory === entry.label }]"
               @click="activeCategory = entry.label"
             >
-              {{ entry.label }}
-              <span>{{ entry.count }}</span>
+              <i :class="['fa-solid', categoryIcon(entry.label)]" aria-hidden="true"></i>
+              <span class="chip-label">{{ entry.label }}</span>
+              <span class="chip-count">{{ entry.count }}</span>
             </button>
           </div>
         </div>
@@ -83,7 +106,10 @@ const {
               <strong>{{ product.name }}</strong>
               <p>{{ product.category }}</p>
             </div>
-            <button type="button" class="primary-btn" @click="openAddModal(product)">Add to Cart</button>
+            <button type="button" class="primary-btn" @click="openAddModal(product)">
+              <i class="fa-solid fa-cart-plus" aria-hidden="true"></i>
+              Add to Cart
+            </button>
           </div>
         </div>
       </article>
@@ -94,14 +120,16 @@ const {
             <strong>Budget Usage</strong>
             <span>{{ utilization }}%</span>
           </div>
+          <p class="metric-desc">Shows how much of your entered budget is currently allocated to your cart.</p>
           <div class="progress-track" role="progressbar" :aria-valuenow="utilization" aria-valuemin="0" aria-valuemax="100">
-            <div class="progress-fill" :style="{ width: `${utilization}%` }"></div>
+            <div :class="['progress-fill', { 'over-budget': remainingBudget < 0 }]" :style="{ width: `${utilization}%` }"></div>
           </div>
           <p v-if="remainingBudget < 0" class="alert">Over budget by {{ formatMoney(Math.abs(remainingBudget)) }}. Remove or adjust some products.</p>
         </section>
 
         <article class="card">
           <h2>Budget</h2>
+          <p class="metric-desc">Set your target spending limit for this shopping session.</p>
           <label for="budget" class="sr-only">Budget in PHP</label>
           <div class="budget-input-wrap">
             <span>PHP</span>
@@ -111,11 +139,13 @@ const {
 
         <article class="card">
           <h2>Total Spent</h2>
+          <p class="metric-desc">Displays the running total based on item price multiplied by quantity.</p>
           <p class="value spent">{{ formatMoney(totalSpent) }}</p>
         </article>
 
         <article class="card">
           <h2>Remaining</h2>
+          <p class="metric-desc">Indicates how much budget is left after current cart calculations.</p>
           <p class="value" :class="remainingBudget < 0 ? 'negative' : 'positive'">{{ formatMoney(remainingBudget) }}</p>
         </article>
 
@@ -131,6 +161,7 @@ const {
                 class="edit-btn"
                 @click="isCartEditMode = !isCartEditMode"
               >
+                <i :class="isCartEditMode ? 'fa-solid fa-check' : 'fa-solid fa-pen-to-square'" aria-hidden="true"></i>
                 {{ isCartEditMode ? 'Done' : 'Edit' }}
               </button>
               <button
@@ -139,6 +170,7 @@ const {
                 :disabled="filteredCartItems.length === 0 || remainingBudget < 0"
                 @click="completeCart"
               >
+                <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
                 Complete Cart
               </button>
             </div>
@@ -178,6 +210,7 @@ const {
                 class="remove" 
                 @click="requestRemoveItem(item)"
               >
+                <i class="fa-solid fa-trash-can" aria-hidden="true"></i>
                 Remove
               </button>
             </div>
@@ -203,9 +236,7 @@ const {
         :class="['mobile-tab-btn', { active: mobileTab === 'products' }]"
         @click="mobileTab = 'products'"
       >
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M3 3h18v18H3z"/><path d="M3 9h18"/><path d="M9 3v18"/><path d="M15 3v18"/>
-        </svg>
+        <i class="fa-solid fa-table-cells-large" aria-hidden="true"></i>
         Products
       </button>
       <button 
@@ -213,9 +244,7 @@ const {
         :class="['mobile-tab-btn', { active: mobileTab === 'cart' }]"
         @click="mobileTab = 'cart'"
       >
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
-        </svg>
+        <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
         Cart
       </button>
     </div>
