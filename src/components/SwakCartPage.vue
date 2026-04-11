@@ -3,15 +3,10 @@ import { useSwakCart } from '../composables/useSwakCart'
 import '../styles/swak-cart.css'
 
 const {
-  activeCategory,
-  addForm,
-  addProduct,
   budget,
   cartSearch,
   catalogSearch,
-  categories,
   categoryWithCounts,
-  closeAddModal,
   filteredCartItems,
   filteredCatalog,
   formatMoney,
@@ -19,12 +14,8 @@ const {
   isCartEditMode,
   mobileTab,
   openAddModal,
-  openManualAddModal,
   remainingBudget,
-  removeItem,
-  selectedProduct,
-  showAddModal,
-  totalSpent,
+  requestRemoveItem,
   updateQty,
   utilization
 } = useSwakCart()
@@ -45,49 +36,14 @@ const {
           <small>{{ filteredCatalog.length }} shown</small>
         </div>
 
-        <div class="product-tools-head">
-          <p class="product-help">Search, filter, then add store-priced items to your cart. Can't find one? Add it manually.</p>
-          <button type="button" class="primary-btn add-manual-btn" @click="openManualAddModal">Add Custom Product</button>
-        </div>
-
-        <div class="product-tools">
-          <div class="controls-row">
-            <label>
-              Search product list
-              <input v-model="catalogSearch" type="search" placeholder="Search by product or category" />
-            </label>
-          </div>
-
-          <div class="category-strip">
-            <button
-              v-for="entry in categoryWithCounts"
-              :key="entry.label"
-              type="button"
-              :class="['category-chip', { active: activeCategory === entry.label }]"
-              @click="activeCategory = entry.label"
-            >
-              {{ entry.label }}
-              <span>{{ entry.count }}</span>
-            </button>
-          </div>
-        </div>
-
         <p v-if="filteredCatalog.length === 0" class="empty-state">No products matched your filter.</p>
 
         <div v-else class="product-grid">
           <div v-for="product in filteredCatalog" :key="`${product.category}-${product.name}`" class="product-card">
-            <img v-if="product.image" :src="product.image" :alt="product.name" class="product-image" />
-            <div v-else class="product-image-fallback" aria-label="No image available">
-              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                <circle cx="9" cy="21" r="1.2" />
-                <circle cx="19" cy="21" r="1.2" />
-                <path d="M2 3h3l2.2 10.5a2 2 0 0 0 2 1.5h7.8a2 2 0 0 0 1.9-1.4L21 7H7" />
-              </svg>
-            </div>
+            <img :src="product.image" :alt="product.name" class="product-image" />
             <div class="product-meta">
               <strong>{{ product.name }}</strong>
               <p>{{ product.category }}</p>
-              <small>{{ product.unit }}{{ product.tags.length ? ` | ${product.tags.join(', ')}` : '' }}</small>
             </div>
             <button type="button" class="primary-btn" @click="openAddModal(product)">Add to Cart</button>
           </div>
@@ -172,7 +128,7 @@ const {
                 v-if="isCartEditMode"
                 type="button" 
                 class="remove" 
-                @click="removeItem(item.id)"
+                @click="requestRemoveItem(item)"
               >
                 Remove
               </button>
@@ -216,44 +172,5 @@ const {
       </button>
     </div>
 
-    <div v-if="showAddModal" class="modal-backdrop" @click.self="closeAddModal">
-      <section class="modal-card">
-        <div class="modal-head">
-          <h2>{{ selectedProduct ? 'Add to Cart' : 'Add Custom Product' }}</h2>
-          <button type="button" class="close-btn" @click="closeAddModal">Close</button>
-        </div>
-
-        <p class="modal-help">
-          {{ selectedProduct ? 'Enter actual store price and quantity before saving.' : 'Add a product not in the list, then set category, price, and quantity.' }}
-        </p>
-
-        <form class="add-form" @submit.prevent="addProduct">
-          <label>
-            Product Name
-            <input v-model="addForm.name" type="text" :readonly="Boolean(selectedProduct)" placeholder="Type product name" required />
-          </label>
-
-          <label>
-            Price (PHP)
-            <input v-model="addForm.price" type="number" min="0" step="0.01" placeholder="Enter store price" required />
-          </label>
-
-          <label>
-            Quantity
-            <input v-model.number="addForm.qty" type="number" min="1" step="1" />
-          </label>
-
-          <label>
-            Category
-            <select v-model="addForm.category" disabled>
-              <option v-for="category in categories" :key="category" :value="category">{{ category }}</option>
-              <option value="Other">Other</option>
-            </select>
-          </label>
-
-          <button type="submit" class="primary-btn">Save Product</button>
-        </form>
-      </section>
-    </div>
   </main>
 </template>
