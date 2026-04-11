@@ -46,19 +46,37 @@ src/
 ├── components/
 │   └── SwakCartPage.vue      # Main application component
 ├── composables/
-│   └── useSwakCart.js        # Core app logic and state management
+│   ├── catalogData.js        # Grocery catalog dataset and category metadata
+│   ├── useBudget.js          # Budget totals, utilization, and currency formatting
+│   ├── useProductsCatalog.js # Catalog filtering, search, and image resolution
+│   ├── useReceiptPrinter.js  # Receipt preview and PDF printing/completion flow
+│   └── useSwakCart.js        # Main orchestration composable for cart behavior
 ├── styles/
-│   └── swak-cart.css         # Complete styling and responsive design
+│   ├── swak-cart-core.css        # Base layout, typography, and component styling
+│   ├── swak-cart-overlays.css    # SweetAlert and overlay-specific styling
+│   ├── swak-cart-responsive.css  # Mobile and tablet responsive behavior
+│   └── swak-cart.css             # Style entrypoint that imports all style layers
 ├── App.vue                   # Root component
 └── main.js                   # Application entry point
+.vscode/
+├── extensions.json           # Recommended extensions
+└── settings.json             # Workspace editor settings
+.gitignore                    # Git ignore rules
 index.html                    # HTML entry point
+jsconfig.json                 # JavaScript project configuration
 package.json                  # Dependencies and scripts
+package-lock.json             # Dependency lockfile
 vite.config.js               # Vite configuration
 ```
 
 ---
 
 ## 🛠️ Installation & Setup
+
+### Prerequisites
+
+* **Node.js:** `^20.19.0` or `>=22.12.0`
+* **npm:** comes with Node.js
 
 ```bash
 # Clone the repository
@@ -75,6 +93,14 @@ npm run dev
 ```
 
 The app will be available at `http://localhost:5173` by default.
+
+### Available Scripts
+
+```bash
+npm run dev      # Start local dev server
+npm run build    # Create production build in dist/
+npm run preview  # Preview production build locally
+```
 
 ---
 
@@ -118,6 +144,7 @@ The app will be available at `http://localhost:5173` by default.
 
 * **Vue 3** – Modern reactive UI framework
 * **Vite** – Lightning-fast build tool and dev server
+* **Font Awesome** – Icon set used for categories and actions
 * **SweetAlert2** – Beautiful modals and notifications
 * **jsPDF** – Client-side PDF generation
 * **jspdf-autotable** – Structured table generation for receipts
@@ -129,7 +156,7 @@ The app will be available at `http://localhost:5173` by default.
 ## 📈 Performance & Best Practices
 
 * ⚡ Component-based architecture with Vue Composition API
-* 🎯 Efficient state management with composables
+* 🎯 Modular state/composable architecture for maintainable feature boundaries
 * 📦 Optimized asset loading and caching
 * 🎨 Clean, maintainable, and documented codebase
 * 📱 Mobile-first responsive design approach
