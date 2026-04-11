@@ -329,6 +329,12 @@ button {
   margin-bottom: 0.8rem;
 }
 
+.cart-actions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
 .cart-header h2 {
   margin: 0 0 0.2rem;
 }
@@ -349,6 +355,23 @@ button {
 
 .edit-btn:hover {
   background: #166954;
+}
+
+.complete-btn {
+  background: #f6ab44;
+  color: #17352c;
+  font-weight: 800;
+  font-size: 0.85rem;
+  padding: 0.45rem 0.7rem;
+}
+
+.complete-btn:hover:not(:disabled) {
+  background: #ee9a23;
+}
+
+.complete-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
 }
 
 .cart-row {
@@ -588,6 +611,30 @@ button {
 .swak-swal .swal2-cancel {
   box-shadow: none !important;
   outline: none !important;
+}
+
+.receipt-swal .swal2-html-container {
+  max-width: none !important;
+}
+
+.receipt-preview {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.receipt-preview-frame {
+  width: 100%;
+  min-height: 66vh;
+  border: 1px solid #cfe2db;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.receipt-preview-note {
+  margin: 0;
+  font-size: 0.88rem;
+  color: #3f665c;
+  text-align: center;
 }
 
 .swak-swal-toast {

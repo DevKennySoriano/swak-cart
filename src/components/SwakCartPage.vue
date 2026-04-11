@@ -19,6 +19,7 @@ const {
   mobileTab,
   openAddModal,
   openManualAddModal,
+  completeCart,
   remainingBudget,
   requestRemoveItem,
   updateQty,
@@ -124,13 +125,23 @@ const {
               <h2>Your Cart</h2>
               <small>{{ filteredCartItems.length }} items</small>
             </div>
-            <button 
-              type="button" 
-              class="edit-btn"
-              @click="isCartEditMode = !isCartEditMode"
-            >
-              {{ isCartEditMode ? 'Done' : 'Edit' }}
-            </button>
+            <div class="cart-actions">
+              <button 
+                type="button" 
+                class="edit-btn"
+                @click="isCartEditMode = !isCartEditMode"
+              >
+                {{ isCartEditMode ? 'Done' : 'Edit' }}
+              </button>
+              <button
+                type="button"
+                class="complete-btn"
+                :disabled="filteredCartItems.length === 0 || remainingBudget < 0"
+                @click="completeCart"
+              >
+                Complete Cart
+              </button>
+            </div>
           </div>
           <label>
             Search cart
