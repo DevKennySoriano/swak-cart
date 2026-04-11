@@ -205,7 +205,7 @@ export function useSwakCart() {
 
 	function toCatalogImage(label) {
 		const safe = encodeURIComponent(label)
-		const svg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 320'><rect width='320' height='320' rx='24' fill='#e6ece9'/><text x='160' y='174' text-anchor='middle' font-size='22' font-family='Arial' font-weight='700' fill='#516a62'>${safe}</text></svg>`
+		const svg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 320'><rect width='320' height='320' rx='24' fill='#e6ece9'/><path d='M86 94h22l18 86a18 18 0 0 0 17 14h92a18 18 0 0 0 17-13l15-57H117' fill='none' stroke='#6a7f77' stroke-width='12' stroke-linecap='round' stroke-linejoin='round'/><circle cx='138' cy='236' r='16' fill='#6a7f77'/><circle cx='228' cy='236' r='16' fill='#6a7f77'/><text x='160' y='286' text-anchor='middle' font-size='20' font-family='Arial' font-weight='700' fill='#516a62'>${safe}</text></svg>`
 		return `data:image/svg+xml;utf8,${svg}`
 	}
 
@@ -289,6 +289,43 @@ export function useSwakCart() {
 		return peso.format(Number(value || 0))
 	}
 
+	async function addItemToCart(payload) {
+		const duplicate = cartItems.value.find((item) => item.name.trim().toLowerCase() === payload.name.toLowerCase())
+		if (duplicate) {
+			const duplicateResult = await Swal.fire({
+				title: 'Already Have An Item in Cart',
+				text: 'This product is already in your cart. Add another line item?',
+				icon: 'question',
+				buttonsStyling: false,
+				customClass: {
+					popup: 'swak-swal',
+					title: 'swak-swal-title',
+					confirmButton: 'swak-btn swak-btn-primary',
+					cancelButton: 'swak-btn swak-btn-cancel'
+				},
+				showCancelButton: true,
+				cancelButtonText: 'Cancel',
+				confirmButtonText: 'Yes, Add',
+				showCloseButton: false,
+				reverseButtons: true
+			})
+
+			if (!duplicateResult.isConfirmed) return false
+		}
+
+		cartItems.value.unshift({
+			id: crypto.randomUUID(),
+			name: payload.name,
+			price: Number(payload.price),
+			qty: Number(payload.qty),
+			category: payload.category || 'Other',
+			image: payload.image || resolveCatalogImage(payload.name),
+			manual: Boolean(payload.manual)
+		})
+		showToast('Added Successfully', 'success')
+		return true
+	}
+
 	async function openAddModal(product) {
 		const result = await Swal.fire({
 			title: 'Add to Cart',
@@ -333,31 +370,65 @@ export function useSwakCart() {
 		if (!result.isConfirmed || !result.value) return
 
 		const payload = result.value
-		const duplicate = cartItems.value.find((item) => item.name.trim().toLowerCase() === payload.name.toLowerCase())
-		if (duplicate) {
-			const duplicateResult = await Swal.fire({
-				title: 'Already Have An Item in Cart',
-				text: 'This product is already in your cart. Add another line item?',
-				icon: 'question',
-				buttonsStyling: false,
-				customClass: {
-					popup: 'swak-swal',
-					title: 'swak-swal-title',
-					confirmButton: 'swak-btn swak-btn-primary',
-					cancelButton: 'swak-btn swak-btn-cancel'
-				},
-				showCancelButton: true,
-				cancelButtonText: 'Cancel',
-				confirmButtonText: 'Yes, Add',
-				showCloseButton: false,
-				reverseButtons: true
-			})
+		await addItemToCart({
+			name: payload.name,
+			price: payload.price,
+			qty: payload.qty,
+			category: payload.category,
+			image: product.image,
+			manual: false
+		})
+	}
 
-			if (!duplicateResult.isConfirmed) return
-		}
+	async function openManualAddModal() {
+		const defaultCategory = activeCategory.value === 'All' ? 'Other' : activeCategory.value
+		const result = await Swal.fire({
+			title: 'Add Product Manually',
+			buttonsStyling: false,
+			customClass: {
+				popup: 'swak-swal',
+				title: 'swak-swal-title',
+				confirmButton: 'swak-btn swak-btn-primary',
+				cancelButton: 'swak-btn swak-btn-cancel'
+			},
+			html: `
+				<label style="display:block;text-align:left;margin-bottom:6px;font-weight:600;">Product Name</label>
+				<input id="swal-name" class="swal2-input" placeholder="Enter item name" style="margin:0 0 10px;">
+				<label style="display:block;text-align:left;margin-bottom:6px;font-weight:600;">Category</label>
+				<input id="swal-category" class="swal2-input" value="${defaultCategory}" placeholder="Other" style="margin:0 0 10px;">
+				<label style="display:block;text-align:left;margin-bottom:6px;font-weight:600;">Price (PHP)</label>
+				<input id="swal-price" type="number" class="swal2-input" min="0" step="0.01" placeholder="Enter store price" style="margin:0 0 10px;">
+				<label style="display:block;text-align:left;margin-bottom:6px;font-weight:600;">Quantity</label>
+				<input id="swal-qty" type="number" class="swal2-input" min="1" step="1" value="1" style="margin:0;">
+			`,
+			showCancelButton: true,
+			cancelButtonText: 'Cancel',
+			confirmButtonText: 'Add Product',
+			showCloseButton: false,
+			reverseButtons: true,
+			focusConfirm: false,
+			preConfirm: () => {
+				const name = document.getElementById('swal-name')?.value?.trim()
+				const category = document.getElementById('swal-category')?.value?.trim() || 'Other'
+				const price = Number(document.getElementById('swal-price')?.value)
+				const qty = Number(document.getElementById('swal-qty')?.value)
 
-		cartItems.value.unshift({ id: crypto.randomUUID(), ...payload })
-		showToast('Added Successfully', 'success')
+				if (!name || Number.isNaN(price) || price <= 0 || Number.isNaN(qty) || qty <= 0) {
+					Swal.showValidationMessage('Please enter a product name, valid price, and quantity.')
+					return null
+				}
+
+				return { name, category, price, qty }
+			}
+		})
+
+		if (!result.isConfirmed || !result.value) return
+
+		await addItemToCart({
+			...result.value,
+			image: resolveCatalogImage(result.value.name),
+			manual: true
+		})
 	}
 
 	async function requestRemoveItem(item) {
@@ -403,6 +474,7 @@ export function useSwakCart() {
 		isCartEditMode,
 		mobileTab,
 		openAddModal,
+		openManualAddModal,
 		remainingBudget,
 		requestRemoveItem,
 		totalSpent,
