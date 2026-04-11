@@ -1,0 +1,215 @@
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(11, 32, 26, 0.55);
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  z-index: 50;
+}
+
+.modal-card {
+  width: min(520px, 95vw);
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #cde3db;
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+}
+
+.modal-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.7rem;
+}
+
+.modal-help {
+  margin: 0 0 0.6rem;
+  color: #356b5d;
+  font-size: 0.88rem;
+}
+
+.confirm-card {
+  width: min(450px, 95vw);
+}
+
+.close-btn {
+  background: #eef6f3;
+  color: #1d6451;
+}
+
+.add-form {
+  display: grid;
+  gap: 0.62rem;
+}
+
+.confirm-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.55rem;
+  margin-top: 0.7rem;
+}
+
+.confirm-actions button {
+  width: auto;
+}
+
+.ghost-btn {
+  background: #eef5f1;
+  color: #1f5f50;
+  font-weight: 700;
+}
+
+.swak-swal {
+  border-radius: 16px !important;
+  border: 1px solid rgba(27, 81, 68, 0.14) !important;
+  background: rgba(255, 255, 255, 0.96) !important;
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.2) !important;
+  padding: 1rem !important;
+}
+
+.swak-swal-title {
+  font-family: 'Sora', sans-serif !important;
+  font-size: 1.05rem !important;
+  color: #18473b !important;
+  padding-bottom: 0.25rem !important;
+}
+
+.swak-swal .swal2-html-container {
+  color: #2f6658 !important;
+  font-size: 0.92rem !important;
+}
+
+.swak-swal .swal2-actions {
+  justify-content: flex-end !important;
+  gap: 0.55rem !important;
+  margin-top: 0.75rem !important;
+}
+
+.swak-swal .swal2-input {
+  border: 1px solid #c9dfd7 !important;
+  border-radius: 10px !important;
+  padding: 0.56rem 0.65rem !important;
+  background: #fcfffd !important;
+  box-shadow: none !important;
+  font-size: 0.94rem !important;
+}
+
+.swak-btn {
+  border: 0 !important;
+  border-radius: 10px !important;
+  padding: 0.52rem 0.82rem !important;
+  font-weight: 700 !important;
+  font-family: 'Manrope', sans-serif !important;
+  cursor: pointer !important;
+  margin: 0 !important;
+}
+
+.swak-btn-primary {
+  background: #1e7b64 !important;
+  color: #fff !important;
+}
+
+.swak-btn-primary:hover {
+  background: #166954 !important;
+}
+
+.swak-btn-danger {
+  background: #d35745 !important;
+  color: #fff !important;
+}
+
+.swak-btn-danger:hover {
+  background: #bb4534 !important;
+}
+
+.swak-btn-cancel {
+  background: #eef5f1 !important;
+  color: #1f5f50 !important;
+}
+
+.swak-btn-cancel:hover {
+  background: #e0ece7 !important;
+}
+
+.swak-swal .swal2-styled:focus,
+.swak-swal .swal2-styled:focus-visible,
+.swak-swal .swal2-styled:active {
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.swak-swal .swal2-confirm,
+.swak-swal .swal2-cancel {
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.receipt-swal .swal2-html-container {
+  max-width: none !important;
+}
+
+.receipt-preview {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.receipt-preview-frame {
+  width: 100%;
+  min-height: 66vh;
+  border: 1px solid #cfe2db;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.receipt-preview-note {
+  margin: 0;
+  font-size: 0.88rem;
+  color: #3f665c;
+  text-align: center;
+}
+
+.swak-swal-toast {
+  border-radius: 12px !important;
+  border: 1px solid rgba(27, 81, 68, 0.12) !important;
+  background: rgba(255, 255, 255, 0.96) !important;
+  color: #1e4f42 !important;
+  font-family: 'Manrope', sans-serif !important;
+  box-shadow: 0 12px 24px rgba(9, 32, 26, 0.28) !important;
+}
+
+.swak-swal-toast .swal2-title {
+  font-size: 0.92rem !important;
+  font-weight: 700 !important;
+}
+
+.swak-swal-toast .swal2-icon {
+  margin: 0 0.5rem 0 0 !important;
+  transform: scale(0.78);
+}
+
+.toast {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 120;
+  max-width: min(360px, 88vw);
+  padding: 0.72rem 0.9rem;
+  border-radius: 12px;
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 12px 24px rgba(9, 32, 26, 0.28);
+}
+
+.toast-success {
+  background: #1e7b64;
+}
+
+.toast-info {
+  background: #2f6caa;
+}
+
+.toast-warning {
+  background: #d3662f;
+}

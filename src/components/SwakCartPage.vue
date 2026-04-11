@@ -22,6 +22,7 @@ const {
   completeCart,
   remainingBudget,
   requestRemoveItem,
+  totalSpent,
   updateQty,
   utilization
 } = useSwakCart()
