@@ -254,6 +254,15 @@ export function useSwakCart() {
     'canned-vegetables.jpg',
     'carrot.jpg',
     'cheese.jpg',
+    'chicken-cuts.jpg',
+    'chicken-whole.jpg',
+    'chili-sauce.jpg',
+    'chips.jpg',
+    'chocolate.jpg',
+    'coffee.jpg',
+    'conditioner.jpg',
+    'cooking-oil.jpg',
+    'corn.jpg',
     'ketchup.jpg',
     'white-rice.jpeg'
   ]
@@ -274,8 +283,10 @@ export function useSwakCart() {
   )
 
   const localImageAliases = {
+    chicken: 'chicken-whole',
     milkfish: 'bangus',
     'milkfish-bangus': 'bangus',
+    'fresh-milk': 'milk',
     water: 'bottled-water',
     biscuits: 'biscuit'
   }
@@ -287,7 +298,7 @@ export function useSwakCart() {
     if (localImageBySlug[slug]) return localImageBySlug[slug]
     if (aliasSlug && localImageBySlug[aliasSlug]) return localImageBySlug[aliasSlug]
 
-    return toCatalogImage(label, category)
+    return ''
   }
 
   const productCatalog = catalogData.categories.flatMap((category) => {
@@ -376,6 +387,15 @@ export function useSwakCart() {
     showAddModal.value = true
   }
 
+  function openManualAddModal() {
+    selectedProduct.value = null
+    addForm.name = ''
+    addForm.category = 'Other'
+    addForm.price = ''
+    addForm.qty = 1
+    showAddModal.value = true
+  }
+
   function closeAddModal() {
     showAddModal.value = false
     selectedProduct.value = null
@@ -432,6 +452,7 @@ export function useSwakCart() {
     isCartEditMode,
     mobileTab,
     openAddModal,
+    openManualAddModal,
     productCatalog,
     remainingBudget,
     removeItem,

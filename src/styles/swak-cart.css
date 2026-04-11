@@ -242,6 +242,29 @@ button {
   margin-bottom: 0.5rem;
 }
 
+.product-tools {
+  margin-bottom: 0.65rem;
+  padding-bottom: 0.2rem;
+}
+
+.product-tools-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 0.55rem;
+}
+
+.product-help {
+  margin: 0;
+  color: #33675a;
+  font-size: 0.86rem;
+}
+
+.add-manual-btn {
+  white-space: nowrap;
+}
+
 .product-list-panel {
   display: grid;
   grid-template-rows: auto 1fr;
@@ -288,6 +311,17 @@ button {
   border: 1px solid #d8e9e3;
 }
 
+.product-image-fallback {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 9px;
+  border: 1px solid #d8e1dd;
+  background: linear-gradient(145deg, #edf1ef 0%, #dfe6e2 100%);
+  color: #6a7f77;
+  display: grid;
+  place-items: center;
+}
+
 .product-meta {
   min-height: 52px;
 }
@@ -296,6 +330,11 @@ button {
   margin: 0.12rem 0 0;
   color: #3d6259;
   font-size: 0.78rem;
+}
+
+.product-meta small {
+  color: #52776d;
+  font-size: 0.74rem;
 }
 
 .cart-list {
@@ -442,6 +481,12 @@ button {
   margin-bottom: 0.7rem;
 }
 
+.modal-help {
+  margin: 0 0 0.6rem;
+  color: #33675a;
+  font-size: 0.86rem;
+}
+
 .close-btn {
   background: #eef6f3;
   color: #1d6451;
@@ -492,6 +537,11 @@ button {
 }
 
 @media (max-width: 720px) {
+  .product-tools-head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
   .cart-row {
     grid-template-columns: 1fr;
     align-items: stretch;
