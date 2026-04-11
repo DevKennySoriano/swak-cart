@@ -313,7 +313,7 @@ export function useSwakCart() {
 			cancelButtonText: 'Cancel',
 			confirmButtonText: 'Add Product',
 			showCloseButton: false,
-			reverseButtons: false,
+			reverseButtons: true,
 			focusConfirm: false,
 			preConfirm: () => {
 				const name = document.getElementById('swal-name')?.value?.trim()
@@ -350,7 +350,7 @@ export function useSwakCart() {
 				cancelButtonText: 'Cancel',
 				confirmButtonText: 'Yes, Add',
 				showCloseButton: false,
-				reverseButtons: false
+				reverseButtons: true
 			})
 
 			if (!duplicateResult.isConfirmed) return
@@ -376,7 +376,7 @@ export function useSwakCart() {
 			cancelButtonText: 'Cancel',
 			confirmButtonText: 'Yes, Remove Item',
 			showCloseButton: false,
-			reverseButtons: false
+			reverseButtons: true
 		})
 
 		if (!result.isConfirmed) return

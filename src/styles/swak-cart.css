@@ -484,10 +484,6 @@ button {
   display: none;
 }
 
-.mobile-hidden {
-  /* Only applied on mobile via media query */
-}
-
 .mobile-tab-btn svg {
   flex-shrink: 0;
 }
@@ -562,6 +558,19 @@ button {
 
 .swak-btn-cancel:hover {
   background: #e0ece7 !important;
+}
+
+.swak-swal .swal2-styled:focus,
+.swak-swal .swal2-styled:focus-visible,
+.swak-swal .swal2-styled:active {
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.swak-swal .swal2-confirm,
+.swak-swal .swal2-cancel {
+  box-shadow: none !important;
+  outline: none !important;
 }
 
 .swak-swal-toast {
