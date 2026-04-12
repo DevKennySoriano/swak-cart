@@ -24,6 +24,7 @@ The application enables users to:
 * ➕ **Manual Product Entry** – Add custom items not found in the catalog
 * 💰 **Real-Time Budget Tracking** – Live spending and remaining budget calculations
 * 📊 **Category Breakdown** – View spending totals by product category
+* 🧭 **Guided App Tutorial** – Driver.js walkthrough for desktop and mobile flows
 * 🎨 **Modal & Toast Notifications** – SweetAlert2-powered confirmations and feedback
 * 🧾 **Receipt Preview & PDF Export** – Preview before completion, then download a print-friendly receipt
 * 🖨️ **Print-Friendly Receipt Layout** – Black-and-white standard format with item count, Sub-total, Discount, VAT/TAX, and Total
@@ -44,17 +45,20 @@ public/
 │   └── products/             # Product images (100+ items)
 src/
 ├── components/
+│   ├── PageLoader.vue        # Initial loading animation component
 │   └── SwakCartPage.vue      # Main application component
 ├── composables/
 │   ├── catalogData.js        # Grocery catalog dataset and category metadata
 │   ├── useBudget.js          # Budget totals, utilization, and currency formatting
 │   ├── useProductsCatalog.js # Catalog filtering, search, and image resolution
 │   ├── useReceiptPrinter.js  # Receipt preview and PDF printing/completion flow
-│   └── useSwakCart.js        # Main orchestration composable for cart behavior
+│   ├── useSwakCart.js        # Main orchestration composable for cart behavior
+│   └── useTutorial.js        # Driver.js tutorial steps and mobile tab sync behavior
 ├── styles/
 │   ├── swak-cart-core.css        # Base layout, typography, and component styling
 │   ├── swak-cart-overlays.css    # SweetAlert and overlay-specific styling
 │   ├── swak-cart-responsive.css  # Mobile and tablet responsive behavior
+│   ├── swak-cart-tutorial.css    # Tutorial popover and coach-mark styling
 │   └── swak-cart.css             # Style entrypoint that imports all style layers
 ├── App.vue                   # Root component
 └── main.js                   # Application entry point
@@ -138,6 +142,13 @@ npm run preview  # Preview production build locally
 * Category Totals section displays spending by product type
 * Real-time alerts when over budget
 
+### Guided Tutorial (Desktop & Mobile)
+1. Click the help icon in the page header to launch the in-app tour
+2. Desktop tour walks through budget entry, product discovery, and cart completion
+3. Mobile tour guides Products and Cart tabs with automatic tab switching per step
+4. On mobile, **Set Your Budget** appears before **Review Your Cart** in the tutorial flow
+5. Previous/Next now keeps the correct tab in view while moving between tutorial steps
+
 ---
 
 ## 🧑‍💻 Technology Stack
@@ -146,6 +157,7 @@ npm run preview  # Preview production build locally
 * **Vite** – Lightning-fast build tool and dev server
 * **Font Awesome** – Icon set used for categories and actions
 * **SweetAlert2** – Beautiful modals and notifications
+* **Driver.js** – Interactive guided walkthrough/tutorial engine
 * **jsPDF** – Client-side PDF generation
 * **jspdf-autotable** – Structured table generation for receipts
 * **CSS3** – Responsive design with flexbox and grid
