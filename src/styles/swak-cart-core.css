@@ -20,8 +20,9 @@ body {
   background: #14644f;
   color: #f8fff8;
   border-radius: 22px;
-  padding: 1.25rem 1.35rem;
+  padding: 1.25rem 4rem 1.25rem 1.35rem;
   box-shadow: 0 18px 35px rgba(15, 84, 66, 0.22);
+  position: relative;
 }
 
 .header-content {

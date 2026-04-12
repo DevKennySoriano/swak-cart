@@ -1,7 +1,9 @@
 <script setup>
 import { ref } from 'vue'
 import { useSwakCart } from '../composables/useSwakCart'
+import { useTutorial } from '../composables/useTutorial'
 import lastUpdated from 'virtual:git-date'
+import '../styles/swak-cart-tutorial.css'
 import '../styles/swak-cart.css'
 
 const showCategoryDropdown = ref(false)
@@ -28,6 +30,12 @@ const {
   utilization
 } = useSwakCart()
 
+const { showTutorial } = useTutorial({
+  setMobileTab: (tab) => {
+    mobileTab.value = tab
+  }
+})
+
 function categoryIcon(label) {
   const iconMap = {
     All: 'fa-table-cells-large',
@@ -52,7 +60,10 @@ function categoryIcon(label) {
 
 <template>
   <main class="page">
-    <section class="page-header">
+    <section id="tutorial-header" class="page-header">
+      <button type="button" class="tutorial-help-btn" @click="showTutorial" title="Learn how to use SWAK-CART" aria-label="Learn how to use SWAK-CART">
+        <i class="fa-solid fa-circle-question" aria-hidden="true"></i>
+      </button>
       <div class="header-content">
         <img src="/images/logo.png" alt="SWAK-CART Logo" class="logo" />
         <div>
@@ -70,7 +81,7 @@ function categoryIcon(label) {
             <h2>Product List</h2>
             <small>{{ filteredCatalog.length }} shown</small>
           </div>
-          <button type="button" class="edit-btn" @click="openManualAddModal">
+          <button id="manual-add-btn" type="button" class="edit-btn" @click="openManualAddModal">
             <i class="fa-solid fa-circle-plus" aria-hidden="true"></i>
             Add Manually
           </button>
@@ -80,7 +91,7 @@ function categoryIcon(label) {
           <div class="controls-row">
             <label>
               Search product list
-              <input v-model="catalogSearch" type="search" placeholder="Search by product or category" />
+              <input id="product-search" v-model="catalogSearch" type="search" placeholder="Search by product or category" />
             </label>
           </div>
 
@@ -102,6 +113,7 @@ function categoryIcon(label) {
           <!-- Mobile category dropdown -->
           <div class="mobile-category-dropdown">
             <button 
+              id="category-filter-toggle"
               type="button" 
               class="category-dropdown-btn"
               @click="showCategoryDropdown = !showCategoryDropdown"
@@ -147,7 +159,7 @@ function categoryIcon(label) {
         </div>
       </article>
 
-      <aside class="stacked-side mobile-cart-tab" :class="{ 'mobile-hidden': mobileTab === 'products' }">
+      <aside id="cart-panel" class="stacked-side mobile-cart-tab" :class="{ 'mobile-hidden': mobileTab === 'products' }">
         <section class="progress-card">
           <div class="progress-head">
             <strong>Budget Usage</strong>
@@ -160,13 +172,13 @@ function categoryIcon(label) {
           <p v-if="remainingBudget < 0" class="alert">Over budget by {{ formatMoney(Math.abs(remainingBudget)) }}. Remove or adjust some products.</p>
         </section>
 
-        <article class="card">
+        <article id="budget-card" class="card">
           <h2>Budget</h2>
           <p class="metric-desc">Set your target spending limit for this shopping session.</p>
-          <label for="budget" class="sr-only">Budget in PHP</label>
+          <label for="budget-input" class="sr-only">Budget in PHP</label>
           <div class="budget-input-wrap">
             <span>PHP</span>
-            <input id="budget" v-model.number="budget" type="number" min="0" step="10" />
+            <input id="budget-input" v-model.number="budget" type="number" min="0" step="10" />
           </div>
         </article>
 
@@ -198,6 +210,7 @@ function categoryIcon(label) {
                 {{ isCartEditMode ? 'Done' : 'Edit' }}
               </button>
               <button
+                id="complete-cart-btn"
                 type="button"
                 class="complete-btn"
                 :disabled="filteredCartItems.length === 0 || remainingBudget < 0"
@@ -265,6 +278,7 @@ function categoryIcon(label) {
 
     <div class="mobile-tabs">
       <button 
+        id="mobile-products-tab-btn"
         type="button" 
         :class="['mobile-tab-btn', { active: mobileTab === 'products' }]"
         @click="mobileTab = 'products'"
@@ -273,6 +287,7 @@ function categoryIcon(label) {
         Products
       </button>
       <button 
+        id="mobile-cart-tab-btn"
         type="button" 
         :class="['mobile-tab-btn', { active: mobileTab === 'cart' }]"
         @click="mobileTab = 'cart'"
