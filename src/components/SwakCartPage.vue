@@ -4,6 +4,7 @@ import { useSwakCart } from '../composables/useSwakCart'
 import '../styles/swak-cart.css'
 
 const lastUpdated = ref('April 11, 2026')
+const showCategoryDropdown = ref(false)
 
 const {
   activeCategory,
@@ -83,7 +84,8 @@ function categoryIcon(label) {
             </label>
           </div>
 
-          <div class="category-strip">
+          <!-- Desktop category strip -->
+          <div class="category-strip desktop-categories">
             <button
               v-for="entry in categoryWithCounts"
               :key="entry.label"
@@ -96,9 +98,39 @@ function categoryIcon(label) {
               <span class="chip-count">{{ entry.count }}</span>
             </button>
           </div>
+
+          <!-- Mobile category dropdown -->
+          <div class="mobile-category-dropdown">
+            <button 
+              type="button" 
+              class="category-dropdown-btn"
+              @click="showCategoryDropdown = !showCategoryDropdown"
+            >
+              <i class="fa-solid fa-filter" aria-hidden="true"></i>
+              {{ activeCategory }}
+              <i :class="['fa-solid', 'fa-chevron-down', { 'rotated': showCategoryDropdown }]" aria-hidden="true"></i>
+            </button>
+            <div v-if="showCategoryDropdown" class="category-dropdown-menu">
+              <button
+                v-for="entry in categoryWithCounts"
+                :key="entry.label"
+                type="button"
+                :class="['dropdown-item', { active: activeCategory === entry.label }]"
+                @click="activeCategory = entry.label; showCategoryDropdown = false"
+              >
+                <i :class="['fa-solid', categoryIcon(entry.label)]" aria-hidden="true"></i>
+                <span>{{ entry.label }}</span>
+                <span class="item-count">{{ entry.count }}</span>
+              </button>
+            </div>
+          </div>
         </div>
 
-        <p v-if="filteredCatalog.length === 0" class="empty-state">No products matched your filter.</p>
+        <div v-if="filteredCatalog.length === 0" class="empty-state">
+          <i class="fa-solid fa-box-open" aria-hidden="true"></i>
+          <h3>No matching products found</h3>
+          <p>We couldn't find any products matching your current filters. Don't worry—you can add items manually to your cart.</p>
+        </div>
 
         <div v-else class="product-grid">
           <div v-for="product in filteredCatalog" :key="`${product.category}-${product.name}`" class="product-card">

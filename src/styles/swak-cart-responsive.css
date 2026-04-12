@@ -40,7 +40,7 @@
   .page {
     width: min(1100px, 96vw);
     margin-top: 1rem;
-    margin-bottom: 6rem;
+    margin-bottom: 5.5rem;
   }
 
   .page-header,
@@ -56,11 +56,21 @@
 
   .product-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.2rem;
+  }
+
+  .product-card {
+    padding: 0.85rem;
+  }
+
+  .product-meta {
+    min-height: 56px;
   }
 
   .layout-grid {
     grid-template-columns: 1fr;
     position: relative;
+    gap: 0.5rem;
   }
 
   .mobile-products-tab,
@@ -113,6 +123,12 @@
     border-bottom-color: #1e7b64;
   }
 
+  .mobile-tab-btn:focus-visible {
+    outline: 2px solid #249f7d;
+    outline-offset: 1px;
+    border-radius: 0;
+  }
+
   .toast {
     right: 0.75rem;
     left: 0.75rem;
@@ -130,7 +146,7 @@
   .footer {
     flex-direction: column;
     gap: 1rem;
-    margin-top: 5rem;
+    margin-top: 1rem;
   }
 
   .footer-left,
