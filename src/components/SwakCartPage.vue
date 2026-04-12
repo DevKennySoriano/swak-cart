@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useSwakCart } from '../composables/useSwakCart'
-import lastUpdated from '../../scripts/getLastUpdate.js'
+import lastUpdated from 'virtual:git-date'
 import '../styles/swak-cart.css'
 
 const showCategoryDropdown = ref(false)
