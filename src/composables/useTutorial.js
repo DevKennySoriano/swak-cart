@@ -4,9 +4,40 @@ import 'driver.js/dist/driver.css'
 export function useTutorial(options = {}) {
   const setMobileTab = typeof options.setMobileTab === 'function' ? options.setMobileTab : null
 
+  const mobileProductsSteps = new Set([
+    '#tutorial-header',
+    '#mobile-products-tab-btn',
+    '#product-search',
+    '#category-filter-toggle',
+    '#manual-add-btn'
+  ])
+
+  const mobileCartSteps = new Set([
+    '#mobile-cart-tab-btn',
+    '#budget-input',
+    '#cart-panel',
+    '#complete-cart-btn'
+  ])
+
   function isMobileViewport() {
     if (typeof window === 'undefined') return false
     return window.matchMedia('(max-width: 540px)').matches
+  }
+
+  function resolveMobileTab(step) {
+    const selector = typeof step?.element === 'string' ? step.element : null
+    if (!selector) return null
+    if (mobileProductsSteps.has(selector)) return 'products'
+    if (mobileCartSteps.has(selector)) return 'cart'
+    return null
+  }
+
+  function syncMobileTabForStep(step) {
+    if (!setMobileTab || !isMobileViewport()) return
+    const tab = resolveMobileTab(step)
+    if (tab) {
+      setMobileTab(tab)
+    }
   }
 
   function getDesktopSteps() {
@@ -131,11 +162,6 @@ export function useTutorial(options = {}) {
       },
       {
         element: '#mobile-cart-tab-btn',
-        onHighlightStarted: () => {
-          if (setMobileTab) {
-            setMobileTab('cart')
-          }
-        },
         popover: {
           title: 'Cart Tab',
           description: 'Tap this tab when you want to review your budget, totals, and cart items.',
@@ -144,24 +170,24 @@ export function useTutorial(options = {}) {
         }
       },
       {
-        element: '#cart-panel',
+        element: '#budget-input',
         onHighlightStarted: () => {
           if (setMobileTab) {
             setMobileTab('cart')
           }
         },
         popover: {
-          title: 'Review Your Cart',
-          description: 'Check quantities, edit prices, and see how much of your budget has been used before you finish checkout.',
+          title: 'Set Your Budget',
+          description: 'This is where you enter your budget on mobile once you switch to the Cart tab.',
           side: 'left',
           align: 'start'
         }
       },
       {
-        element: '#budget-input',
+        element: '#cart-panel',
         popover: {
-          title: 'Set Your Budget',
-          description: 'This is where you enter your budget on mobile once you switch to the Cart tab.',
+          title: 'Review Your Cart',
+          description: 'Check quantities, edit prices, and see how much of your budget has been used before you finish checkout.',
           side: 'left',
           align: 'start'
         }
@@ -183,6 +209,25 @@ export function useTutorial(options = {}) {
     animate: true,
     allowClose: true,
     overlayOpacity: 0.65,
+    onHighlighted: (_element, step) => {
+      syncMobileTabForStep(step)
+    },
+    onNextClick: (_element, _step, opts) => {
+      const steps = opts.driver.getConfig().steps || []
+      const activeIndex = opts.driver.getActiveIndex()
+      if (typeof activeIndex === 'number') {
+        syncMobileTabForStep(steps[activeIndex + 1])
+      }
+      opts.driver.moveNext()
+    },
+    onPrevClick: (_element, _step, opts) => {
+      const steps = opts.driver.getConfig().steps || []
+      const activeIndex = opts.driver.getActiveIndex()
+      if (typeof activeIndex === 'number') {
+        syncMobileTabForStep(steps[activeIndex - 1])
+      }
+      opts.driver.movePrevious()
+    },
     steps: isMobileViewport() ? getMobileSteps() : getDesktopSteps()
   })
 
