@@ -6,21 +6,26 @@
 
 No download required. No account required. Open and use instantly in your browser.
 
-The application enables users to:
+### What You Can Do
 
-* Set and track a grocery budget
-* Browse and search from an extensive catalog of grocery items
-* Add products to a cart with custom pricing
+* Set and track your grocery budget in real time
+* Browse and search from an extensive catalog of 100+ grocery items
+* Add products to a cart with custom pricing from your store
 * Add items manually if not found in the catalog
-* Track real-time spending and remaining budget
+* Track real-time spending and remaining budget as you shop
 * View category-based spending breakdown
-* Manage cart items with full edit capabilities
+* Manage cart items with full edit capabilities (price, quantity, remove)
+* Get smart budget suggestions (remove when over, add when under budget)
+* Export a clean receipt-style PDF for your records
+* Use the guided in-app tutorial on desktop and mobile
 
 ---
 
 ## 🧩 Features
 
 * 📱 **Fully Responsive Design** – Optimized for desktop, tablet, and mobile devices
+* 🎨 **Modern Homepage** – Beautiful multi-section landing page with smooth scrolling and animated elements
+* 🎬 **Scroll Animations (AOS)** – Sections and cards fade in as you scroll for an engaging experience
 * 🔍 **Smart Search & Filtering** – Find products by name or category instantly
 * 🛍️ **Extensive Catalog** – 100+ grocery items across 12+ categories
 * ➕ **Manual Product Entry** – Add custom items not found in the catalog
@@ -32,9 +37,10 @@ The application enables users to:
 * 🧾 **Receipt Preview & PDF Export** – Preview before completion, then download a print-friendly receipt
 * 🖨️ **Print-Friendly Receipt Layout** – Black-and-white standard format with item count, Sub-total, Discount, VAT/TAX, and Total
 * ✅ **Smart Completion Rules** – Complete Cart is disabled when over budget or when cart is empty
-* ✨ **Smooth User Experience** – Professional animations and clean UI
+* ✨ **Smooth User Experience** – Professional animations and clean UI transitions
 * 🖼️ **Product Images** – Real product images with fallback placeholders
 * 🔄 **Editable Cart** – Modify prices and quantities on the fly
+* 📸 **Step-by-Step Visual Guide** – Homepage includes illustrated steps (screenshots) showing the full workflow
 
 ---
 
@@ -45,18 +51,25 @@ public/
 ├── images/
 │   ├── logo.png              # SWAK-CART logo
 │   ├── icons/                # Social and branding icons
+│   ├── homepage/             # Homepage assets
+│   │   ├── swak-cart-banner.png              # Hero banner image
+│   │   ├── homepage-setbudget-step1.jpg      # Step 1: Set Budget
+│   │   ├── homepage-additems-step2.jpg       # Step 2: Add Items
+│   │   ├── homepage-reviewcart-step3.jpg     # Step 3: Review Summary
+│   │   └── homepage-complete-step4.png       # Step 4: Complete & Save
 │   └── products/             # Product images (100+ items)
 src/
 ├── components/
+│   ├── HomePage.vue          # Modern landing page with hero, features, about, steps
 │   ├── PageLoader.vue        # Initial loading animation component
-│   └── SwakCartPage.vue      # Main application component
+│   ├── SwakCartPage.vue      # Main application component
 ├── composables/
 │   ├── catalogData.js        # Grocery catalog dataset and category metadata
 │   ├── useBudget.js          # Budget totals, utilization, and currency formatting
 │   ├── useProductsCatalog.js # Catalog filtering, search, and image resolution
 │   ├── useReceiptPrinter.js  # Receipt preview and PDF printing/completion flow
 │   ├── useSwakCart.js        # Main orchestration composable for cart behavior
-	│   ├── useSuggestion.js      # Cart-aware budget suggestion logic
+│   ├── useSuggestion.js      # Cart-aware budget suggestion logic
 │   └── useTutorial.js        # Driver.js tutorial steps and mobile tab sync behavior
 ├── styles/
 │   ├── swak-cart-core.css        # Base layout, typography, and component styling
@@ -64,8 +77,8 @@ src/
 │   ├── swak-cart-responsive.css  # Mobile and tablet responsive behavior
 │   ├── swak-cart-tutorial.css    # Tutorial popover and coach-mark styling
 │   └── swak-cart.css             # Style entrypoint that imports all style layers
-├── App.vue                   # Root component
-└── main.js                   # Application entry point
+├── App.vue                   # Root component (route switcher)
+└── main.js                   # Application entry point (AOS initialization)
 .vscode/
 ├── extensions.json           # Recommended extensions
 └── settings.json             # Workspace editor settings
@@ -75,6 +88,7 @@ jsconfig.json                 # JavaScript project configuration
 package.json                  # Dependencies and scripts
 package-lock.json             # Dependency lockfile
 vite.config.js               # Vite configuration
+README.md                     # This file
 ```
 
 ---
@@ -180,15 +194,16 @@ The suggestion card appears directly below **Budget Usage** in the sidebar (when
 
 ## 🧑‍💻 Technology Stack
 
-* **Vue 3** – Modern reactive UI framework
+* **Vue 3** – Modern reactive UI framework with Composition API
 * **Vite** – Lightning-fast build tool and dev server
+* **AOS (Animate On Scroll)** – Scroll-triggered animations for modern feel
 * **Font Awesome** – Icon set used for categories and actions
 * **SweetAlert2** – Beautiful modals and notifications
 * **Driver.js** – Interactive guided walkthrough/tutorial engine
 * **jsPDF** – Client-side PDF generation
 * **jspdf-autotable** – Structured table generation for receipts
 * **CSS3** – Responsive design with flexbox and grid
-* **JavaScript (ES6+)** – Composition API for state management
+* **JavaScript (ES6+)** – Modular composable architecture for state
 
 ---
 
