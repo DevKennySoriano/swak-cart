@@ -114,14 +114,29 @@ export function useSwakCart() {
 				cancelButton: 'swak-btn swak-btn-cancel'
 			},
 			html: `
-				<label style="display:block;text-align:left;margin-bottom:6px;font-weight:600;">Product Name</label>
-				<input id="swal-name" class="swal2-input" value="${product.name}" readonly style="margin:0 0 10px;">
-				<label style="display:block;text-align:left;margin-bottom:6px;font-weight:600;">Price (PHP)</label>
-				<input id="swal-price" type="number" class="swal2-input" min="0" step="0.01" placeholder="Enter store price" style="margin:0 0 10px;">
-				<label style="display:block;text-align:left;margin-bottom:6px;font-weight:600;">Quantity</label>
-				<input id="swal-qty" type="number" class="swal2-input" min="1" step="1" value="1" style="margin:0 0 10px;">
-				<label style="display:block;text-align:left;margin-bottom:6px;font-weight:600;">Category</label>
-				<input id="swal-category" class="swal2-input" value="${product.category}" readonly style="margin:0;">
+				<div style="display:grid;gap:1.2rem;text-align:left;">
+					<div style="text-align:center;">
+						<img id="swal-product-image" src="${product.image}" alt="${product.name}" style="max-width:100%;max-height:180px;border-radius:10px;object-fit:cover;margin-bottom:0.8rem;">
+						<div style="font-weight:600;font-size:1.1rem;color:#1e6452;margin-bottom:0.3rem;">${product.name}</div>
+						<div style="font-size:0.9rem;color:#456f63;">${product.category}</div>
+					</div>
+					<div style="display:grid;grid-template-columns:1fr 1fr;gap:0.8rem;">
+						<div>
+							<label style="display:block;font-size:0.9rem;color:#666;margin-bottom:3px;font-weight:600;">Price (PHP)</label>
+							<input id="swal-price" type="number" class="swal2-input" min="0" step="0.01" placeholder="Enter Store Actual Price" style="margin:0;font-size:1rem;">
+						</div>
+						<div>
+							<label style="display:block;font-size:0.9rem;color:#666;margin-bottom:3px;font-weight:600;">Quantity</label>
+							<input id="swal-qty" type="number" class="swal2-input" min="1" step="1" value="1" style="margin:0;font-size:1rem;">
+						</div>
+					</div>
+					<div style="padding:0.8rem;background:#e5f5ef;border-radius:8px;display:grid;gap:0.3rem;">
+						<div style="font-size:0.85rem;color:#456f63;">Sub-Total</div>
+						<div id="swal-subtotal" style="font-size:1.5rem;font-weight:800;color:#1e7b64;">₱0.00</div>
+					</div>
+				</div>
+				<input id="swal-name" type="hidden" value="${product.name}">
+				<input id="swal-category" type="hidden" value="${product.category}">
 			`,
 			showCancelButton: true,
 			cancelButtonText: 'Cancel',
@@ -129,6 +144,19 @@ export function useSwakCart() {
 			showCloseButton: false,
 			reverseButtons: true,
 			focusConfirm: false,
+			didOpen: () => {
+				const updateSubtotal = () => {
+					const price = parseFloat(document.getElementById('swal-price')?.value || 0)
+					const qty = parseInt(document.getElementById('swal-qty')?.value || 1)
+					const subtotal = price * qty
+					const formatted = new Intl.NumberFormat('en-PH', { style: 'currency', currency: 'PHP', minimumFractionDigits: 2 }).format(subtotal)
+					document.getElementById('swal-subtotal').textContent = formatted
+				}
+				
+				document.getElementById('swal-price')?.addEventListener('input', updateSubtotal)
+				document.getElementById('swal-qty')?.addEventListener('input', updateSubtotal)
+				updateSubtotal()
+			},
 			preConfirm: () => {
 				const name = document.getElementById('swal-name')?.value?.trim()
 				const price = Number(document.getElementById('swal-price')?.value)
