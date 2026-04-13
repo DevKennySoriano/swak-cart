@@ -473,11 +473,32 @@ button i {
   display: grid;
   grid-template-columns: 1.2fr 0.8fr 0.55fr auto auto;
   gap: 0.5rem;
-  align-items: end;
+  align-items: center;
   border: 1px solid #d5e8e1;
   border-radius: 11px;
   padding: 0.55rem;
   background: #f9fffc;
+}
+
+.cart-item-main {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-width: 0;
+}
+
+.cart-item-image {
+  width: 46px;
+  height: 46px;
+  border-radius: 9px;
+  object-fit: cover;
+  border: 1px solid #d6e8e1;
+  background: #eef7f3;
+  flex-shrink: 0;
+}
+
+.cart-item-main strong {
+  display: block;
 }
 
 .cart-row p {

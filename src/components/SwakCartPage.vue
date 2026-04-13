@@ -245,9 +245,12 @@ function categoryIcon(label) {
           </label>
           <div class="cart-list">
             <div v-for="item in filteredCartItems" :key="item.id" class="cart-row">
-              <div>
-                <strong>{{ item.name }}</strong>
-                <p>{{ item.category }}</p>
+              <div class="cart-item-main">
+                <img :src="item.image" :alt="item.name" class="cart-item-image" />
+                <div>
+                  <strong>{{ item.name }}</strong>
+                  <p>{{ item.category }}</p>
+                </div>
               </div>
 
               <div v-if="!isCartEditMode" class="cart-view-mode">
