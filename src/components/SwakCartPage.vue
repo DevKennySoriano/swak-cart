@@ -24,6 +24,7 @@ const {
   openManualAddModal,
   completeCart,
   remainingBudget,
+  suggestion,
   requestRemoveItem,
   totalSpent,
   updateQty,
@@ -171,6 +172,23 @@ function categoryIcon(label) {
           </div>
           <p v-if="remainingBudget < 0" class="alert">Over budget by {{ formatMoney(Math.abs(remainingBudget)) }}. Remove or adjust some products.</p>
         </section>
+
+        <article v-if="suggestion" class="panel suggestion-panel">
+          <div class="suggestion-head">
+            <strong>{{ suggestion.title }}</strong>
+            <span :class="['suggestion-badge', suggestion.type]">
+              {{ suggestion.type === 'over-budget' ? 'Fix budget' : 'Add later' }}
+            </span>
+          </div>
+          <p class="metric-desc">{{ suggestion.summary }}</p>
+          <div v-if="suggestion.items.length" class="summary-grid suggestion-grid">
+            <div v-for="item in suggestion.items" :key="item.key" class="summary-chip suggestion-chip">
+              <span>{{ item.label }}</span>
+              <strong>{{ item.detail }}</strong>
+              <p class="suggestion-note">{{ item.note }}</p>
+            </div>
+          </div>
+        </article>
 
         <article id="budget-card" class="card">
           <h2>Budget</h2>

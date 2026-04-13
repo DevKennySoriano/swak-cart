@@ -3,6 +3,7 @@ import Swal from 'sweetalert2'
 import { useBudget } from './useBudget'
 import { useProductsCatalog } from './useProductsCatalog'
 import { useReceiptPrinter } from './useReceiptPrinter'
+import { useSuggestion } from './useSuggestion'
 
 export function useSwakCart() {
 	const cartItems = ref([])
@@ -17,10 +18,12 @@ export function useSwakCart() {
 		categories,
 		categoryWithCounts,
 		filteredCatalog,
+		productCatalog,
 		resolveCatalogImage
 	} = useProductsCatalog()
 
 	const { budget, formatMoney, groupedTotals, remainingBudget, totalSpent, utilization } = useBudget(cartItems)
+	const { suggestion } = useSuggestion(cartItems, remainingBudget, productCatalog, formatMoney)
 
 	const filteredCartItems = computed(() => {
 		const query = cartSearch.value.trim().toLowerCase()
@@ -249,6 +252,7 @@ export function useSwakCart() {
 		mobileTab,
 		openAddModal,
 		openManualAddModal,
+		suggestion,
 		completeCart,
 		remainingBudget,
 		requestRemoveItem,

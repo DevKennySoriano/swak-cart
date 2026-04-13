@@ -23,6 +23,7 @@ The application enables users to:
 * 🛍️ **Extensive Catalog** – 100+ grocery items across 12+ categories
 * ➕ **Manual Product Entry** – Add custom items not found in the catalog
 * 💰 **Real-Time Budget Tracking** – Live spending and remaining budget calculations
+* 💡 **Budget Suggestions** – When over budget, see which items to remove to recover the overspent amount; when budget remains, get smart product recommendations
 * 📊 **Category Breakdown** – View spending totals by product category
 * 🧭 **Guided App Tutorial** – Driver.js walkthrough for desktop and mobile flows
 * 🎨 **Modal & Toast Notifications** – SweetAlert2-powered confirmations and feedback
@@ -53,6 +54,7 @@ src/
 │   ├── useProductsCatalog.js # Catalog filtering, search, and image resolution
 │   ├── useReceiptPrinter.js  # Receipt preview and PDF printing/completion flow
 │   ├── useSwakCart.js        # Main orchestration composable for cart behavior
+	│   ├── useSuggestion.js      # Cart-aware budget suggestion logic
 │   └── useTutorial.js        # Driver.js tutorial steps and mobile tab sync behavior
 ├── styles/
 │   ├── swak-cart-core.css        # Base layout, typography, and component styling
@@ -130,6 +132,11 @@ npm run preview  # Preview production build locally
 3. Click **Remove** to delete items
 4. Click **Done** to finish editing
 
+### Budget Suggestions
+The suggestion card appears directly below **Budget Usage** in the sidebar (when applicable):
+* **Over Budget:** Shows the cart item(s) you can remove to recover the overspent amount
+* **Budget Remaining:** When the cart has 2+ items and budget is left, suggests common essential products not yet in your cart
+
 ### Completing & Downloading Receipt
 1. Click **Complete Cart** (enabled only when cart is not over budget)
 2. Confirm to open the receipt preview
@@ -138,9 +145,10 @@ npm run preview  # Preview production build locally
 5. A confirmation modal appears after completion
 
 ### Viewing Spending Breakdown
-* Budget Usage bar shows your spending percentage
-* Category Totals section displays spending by product type
-* Real-time alerts when over budget
+* **Budget Usage bar** – Shows your spending percentage and progress
+* **Suggestion card** – Over-budget removal plans and essential product recommendations
+* **Category Totals** – Spending breakdown by product category
+* **Real-time alerts** – Warning when cart exceeds budget
 
 ### Guided Tutorial (Desktop & Mobile)
 1. Click the help icon in the page header to launch the in-app tour
