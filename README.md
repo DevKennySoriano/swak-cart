@@ -137,6 +137,23 @@ The suggestion card appears directly below **Budget Usage** in the sidebar (when
 * **Over Budget:** Shows the cart item(s) you can remove to recover the overspent amount
 * **Budget Remaining:** When the cart has 2+ items and budget is left, suggests common essential products not yet in your cart
 
+#### How Suggestions Are Calculated
+
+**Over-Budget Removal Plan:**
+- Uses a backtracking algorithm to find the minimal set of cart items whose combined cost matches or exceeds the overspent amount
+- Prioritizes: lowest overshoot → fewest items → lowest total cost
+- Example: If over budget by ₱120, it suggests removing item(s) that total at least ₱120 but minimizes wasted savings
+
+**Budget-Remaining Recommendations:**
+- Filters products to only `common: true` items not already in the cart
+- Scores each product based on tags and utility:
+  - Staple items (rice, eggs, flour): +60 points
+  - Ulam / main dishes (meat, fish): +45 points
+  - Breakfast items (bread, tuyo): +35 points
+  - Other tags (healthy, quick): +20–25 points
+  - Common item baseline: +40 points
+- Surfaces the 4 highest-scoring products with reason descriptions
+
 ### Completing & Downloading Receipt
 1. Click **Complete Cart** (enabled only when cart is not over budget)
 2. Confirm to open the receipt preview
