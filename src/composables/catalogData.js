@@ -39,8 +39,7 @@ export const catalogData = {
 				{ name: 'Tilapia', unit: 'kg', common: true, tags: ['ulam'] },
 				{ name: 'Shrimp', unit: 'kg', common: true, tags: ['ulam'] },
 				{ name: 'Squid', unit: 'kg', common: true, tags: ['ulam'] },
-				{ name: 'Dried fish (tuyo)', unit: 'pack', common: true, tags: ['breakfast'] },
-				{ name: 'Dried fish (danggit)', unit: 'pack', common: true, tags: ['breakfast'] },
+				{ name: 'Dried fish', unit: 'pack', common: true, tags: ['breakfast'] },
 				{ name: 'Dried anchovies (dilis)', unit: 'pack', common: true, tags: [] },
 				{ name: 'Frozen fish fillet', unit: 'pack', common: true, tags: [] }
 			]
@@ -181,7 +180,23 @@ export const localImageFiles = [
 	'bread-loaf.jpg', 'brown-rice.jpg', 'butter.jpg', 'cabbage.jpg', 'candy.jpg',
 	'canned-fruits.jpg', 'canned-tuna.jpg', 'canned-vegetables.jpg', 'carrot.jpg', 'cheese.jpg',
 	'chicken-cuts.jpg', 'chicken-whole.jpg', 'chili-sauce.jpg', 'chips.jpg', 'chocolate.jpg',
-	'coffee.jpg', 'conditioner.jpg', 'cooking-oil.jpg', 'corn.jpg', 'ketchup.jpg', 'white-rice.jpeg'
+	'coffee.jpg', 'conditioner.jpg', 'cooking-oil.jpg', 'corn.jpg', 'corned-beef.jpg',
+	'crackers.jpg', 'cup-noodles.jpg', 'deodorant.jpg', 'dishwashing-liquid.jpg',
+	'dried-anchovies.jpg', 'dried-fish.jpg', 'eggplant.jpg', 'eggs.jpg', 'energy-drink.jpg',
+	'evaporated-milk.jpg', 'fabric-conditioner.jpg', 'feminine-products.jpg', 'fish-sauce.jpg',
+	'flour.jpg', 'fresh-milk.jpg', 'frozen-fish-fillet.jpg', 'garlic-powder.jpg', 'garlic.jpg',
+	'glutinous-rice.jpg', 'ground-beef.jpg', 'ground-pork.jpg', 'ham.jpg', 'hotdog.jpg',
+	'instant-noodles.jpg', 'jasmine-rice.jpg', 'juice-drinks.jpg', 'kangkong.jpg', 'ketchup.jpg',
+	'laundry-detergent.jpg', 'mango.jpg', 'margarine.jpg', 'mayonnaise.jpg', 'meat-loaf.jpg',
+	'multi-purpose-cleaner.jpg', 'oats.jpg', 'onion-powder.jpg', 'onion.jpg', 'orange.jpg',
+	'oyster-sauce.jpg', 'pandesal.jpg', 'papaya.jpg', 'pasta.jpg', 'pechay.jpg',
+	'pineapple.jpg', 'pork-kasim.jpg', 'pork-liempo.jpg', 'potato.jpg',
+	'powdered-chocolate-drink.jpg', 'ready-to-eat-meals.jpg', 'salt.jpg', 'sardines.jpg',
+	'sausage.jpg', 'sayote.jpg', 'seasoning-mix.jpg', 'shampoo.jpg', 'shrimp.jpg', 'soap.jpg',
+	'soft-drinks.jpg', 'soy-sauce.jpg', 'squash.jpg', 'squid.jpg', 'sugar.jpg', 'tea.jpg',
+	'thrash-bags.jpg', 'tilapia.jpg', 'tissue-paper.jpg', 'toilet-cleaner.jpg', 'tomato.jpg',
+	'toothbrush.jpg', 'toothpaste.jpg', 'vinegar.jpg', 'water-melon.jpg', 'white-rice.jpeg',
+	'yogurt.jpg'
 ]
 
 export const imageAliases = {
@@ -189,5 +204,8 @@ export const imageAliases = {
 	milkfish: 'bangus',
 	'milkfish-bangus': 'bangus',
 	water: 'bottled-water',
-	biscuits: 'biscuit'
+	biscuits: 'biscuit',
+	watermelon: 'water-melon',
+	'trash-bags': 'thrash-bags',
+	'energy-drinks': 'energy-drink'
 }
