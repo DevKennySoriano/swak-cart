@@ -127,8 +127,8 @@ export function useSwakCart() {
 				<div id="swal-modal-content">
 					<div id="swal-modal-header">
 						<img id="swal-product-image" src="${product.image}" alt="${product.name}">
-						<div style="font-weight:600;font-size:1.1rem;color:#1e6452;margin-bottom:0.3rem;">${product.name}</div>
-						<div style="font-size:0.9rem;color:#456f63;">${product.category}</div>
+						<div style="font-weight:600;font-size:1.1rem;color:#3b8e69;margin-bottom:0.3rem;">${product.name}</div>
+						<div style="font-size:0.9rem;color:#5f8a77;">${product.category}</div>
 					</div>
 					<div id="swal-modal-inputs">
 						<div>
@@ -141,8 +141,8 @@ export function useSwakCart() {
 						</div>
 					</div>
 					<div style="padding:0.8rem;background:#e5f5ef;border-radius:8px;display:grid;gap:0.3rem;">
-						<div style="font-size:0.85rem;color:#456f63;">Sub-Total</div>
-						<div id="swal-subtotal" style="font-size:1.5rem;font-weight:800;color:#1e7b64;">₱0.00</div>
+						<div style="font-size:0.85rem;color:#5f8a77;">Sub-Total</div>
+						<div id="swal-subtotal" style="font-size:1.5rem;font-weight:800;color:#57b86f;">₱0.00</div>
 					</div>
 				</div>
 				<input id="swal-name" type="hidden" value="${product.name}">

@@ -1,8 +1,10 @@
-# 🛒 SWAK-CART – Grocery Budget Calculator
+# 🛒 SWAK-CART – Your Grocery Companion
 
 ## 📌 Overview
 
-**SWAK-CART** is a modern, responsive grocery budget calculator built with **Vue 3** and **Vite**. Designed to help users manage their grocery shopping within a predetermined budget, SWAK-CART combines an extensive product catalog with real-time budget tracking and an intuitive user interface.
+**SWAK-CART** is your grocery companion: a modern, responsive web app built with **Vue 3** and **Vite** to help you shop smarter and stay within budget. It combines an extensive product catalog, real-time budget tracking, and clear suggestions before checkout.
+
+No download required. No account required. Open and use instantly in your browser.
 
 The application enables users to:
 

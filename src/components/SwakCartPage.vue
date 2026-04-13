@@ -68,9 +68,9 @@ function categoryIcon(label) {
       <div class="header-content">
         <img src="/images/logo.png" alt="SWAK-CART Logo" class="logo" />
         <div>
-          <p class="eyebrow">SWAK-CART</p>
-          <h1>Grocery Budget Calculator</h1>
-          <p class="subhead">Enter your budget, pick products from the list, then enter actual store price before adding to cart.</p>
+          <p class="eyebrow">SWAK-CART: Your Grocery Companion</p>
+          <h1>Shop smarter and stay within budget.</h1>
+          <p class="subhead">Set your budget, add items with real store prices, and track your total before checkout.</p>
         </div>
       </div>
     </section>

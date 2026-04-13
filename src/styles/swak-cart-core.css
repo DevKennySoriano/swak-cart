@@ -17,7 +17,7 @@ body {
 }
 
 .page-header {
-  background: #14644f;
+  background: #57b86f;
   color: #f8fff8;
   border-radius: 22px;
   padding: 1.25rem 4rem 1.25rem 1.35rem;
@@ -96,7 +96,7 @@ h2 {
 
 .metric-desc {
   margin: -0.25rem 0 0.6rem;
-  color: #456f63;
+  color: #5f8a77;
   font-size: 0.82rem;
   line-height: 1.35;
 }
@@ -108,11 +108,11 @@ h2 {
 }
 
 .spent {
-  color: #145f4a;
+  color: #2f8b63;
 }
 
 .positive {
-  color: #1f7a63;
+  color: #45a576;
 }
 
 .negative {
@@ -127,7 +127,7 @@ h2 {
 
 .budget-input-wrap span {
   font-weight: 700;
-  color: #235f50;
+  color: #3f916d;
 }
 
 input,
@@ -148,7 +148,7 @@ select {
 input:focus,
 select:focus,
 button:focus {
-  outline: 2px solid #249f7d;
+  outline: 2px solid #74c98f;
   outline-offset: 1px;
 }
 
@@ -167,7 +167,7 @@ button:focus {
 
 .progress-fill {
   height: 100%;
-  background: #2a9b7e;
+  background: #64c183;
   transition: width 220ms ease;
 }
 
@@ -197,7 +197,7 @@ button:focus {
   padding: 0.18rem 0.55rem;
   border-radius: 999px;
   background: #e5f5ef;
-  color: #1e7b64;
+  color: #57b86f;
   font-size: 0.72rem;
   font-weight: 700;
   white-space: nowrap;
@@ -254,14 +254,14 @@ button i {
 
 .primary-btn,
 .essential-action button {
-  background: #1e7b64;
+  background: #57b86f;
   color: #fff;
   font-weight: 700;
 }
 
 .primary-btn:hover,
 .essential-action button:hover {
-  background: #166954;
+  background: #49a961;
 }
 
 .category-strip {
@@ -276,7 +276,7 @@ button i {
   align-items: center;
   gap: 0.4rem;
   background: #eef8f4;
-  color: #1e6452;
+  color: #3b8e69;
   border: 1px solid #cce6de;
 }
 
@@ -299,7 +299,7 @@ button i {
 }
 
 .category-chip.active {
-  background: #1e7b64;
+  background: #57b86f;
   color: #fff;
   border-color: transparent;
 }
@@ -364,14 +364,14 @@ button i {
 .empty-state h3 {
   margin: 0;
   font-size: 1.1rem;
-  color: #1e6452;
+  color: #3b8e69;
   font-weight: 600;
 }
 
 .empty-state p {
   margin: 0;
   font-size: 0.95rem;
-  color: #456f63;
+  color: #5f8a77;
   max-width: 280px;
   line-height: 1.5;
 }
@@ -441,7 +441,7 @@ button i {
 }
 
 .edit-btn {
-  background: #1e7b64;
+  background: #57b86f;
   color: #fff;
   font-weight: 700;
   font-size: 0.85rem;
@@ -449,7 +449,7 @@ button i {
 }
 
 .edit-btn:hover {
-  background: #166954;
+  background: #49a961;
 }
 
 .complete-btn {
@@ -606,7 +606,7 @@ button i {
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background: #1e7b64;
+  background: #57b86f;
   color: #fff;
   text-decoration: none;
   transition: all 200ms ease;
@@ -629,7 +629,7 @@ button i {
   width: 100%;
   padding: 0.6rem 0.8rem;
   background: #eef8f4;
-  color: #1e6452;
+  color: #3b8e69;
   border: 1px solid #cce6de;
   border-radius: 6px;
   font-weight: 600;
@@ -676,7 +676,7 @@ button i {
   width: 100%;
   padding: 0.75rem 0.8rem;
   background: transparent;
-  color: #1e6452;
+  color: #3b8e69;
   border: none;
   border-bottom: 1px solid #f0f5f2;
   font-weight: 500;
@@ -698,7 +698,7 @@ button i {
 
 .dropdown-item.active {
   background: #e8f2ee;
-  color: #1e7b64;
+  color: #57b86f;
   font-weight: 700;
 }
 
@@ -722,7 +722,7 @@ button i {
 }
 
 .social-link:hover {
-  background: #166954;
+  background: #49a961;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(30, 123, 100, 0.25);
 }
@@ -733,12 +733,12 @@ button i {
 }
 
 .portfolio-link {
-  background: #1e7b64;
+  background: #57b86f;
   padding: 2px;
 }
 
 .portfolio-link:hover {
-  background: #166954;
+  background: #49a961;
 }
 
 .k-logo {

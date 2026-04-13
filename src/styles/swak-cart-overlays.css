@@ -107,12 +107,12 @@
 }
 
 .swak-btn-primary {
-  background: #1e7b64 !important;
+  background: #57b86f !important;
   color: #fff !important;
 }
 
 .swak-btn-primary:hover {
-  background: #166954 !important;
+  background: #49a961 !important;
 }
 
 .swak-btn-danger {
@@ -203,7 +203,7 @@
 }
 
 .toast-success {
-  background: #1e7b64;
+  background: #57b86f;
 }
 
 .toast-info {
