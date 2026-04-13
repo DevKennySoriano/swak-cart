@@ -109,8 +109,8 @@ onBeforeUnmount(() => {
       </button>
     </div>
 
-    <section id="home" class="hero-banner">
-      <div>
+    <section id="home" class="hero-banner" data-aos="fade-up">
+      <div data-aos="fade-right" data-aos-delay="80">
         <p class="eyebrow">SWAK-CART: Your Grocery Companion</p>
         <h1>Shop smarter and stay within budget.</h1>
         <p class="hero-copy">
@@ -124,98 +124,109 @@ onBeforeUnmount(() => {
         </div>
       </div>
 
-      <div class="hero-media">
-        <img src="/images/logo.png" alt="SWAK-CART banner image" class="hero-image" />
+      <div class="hero-media" data-aos="zoom-in" data-aos-delay="140">
+        <img src="/images/homepage/swak-cart-banner.png" alt="SWAK-CART banner image" class="hero-image" />
       </div>
     </section>
 
-    <section id="features" class="section">
+    <section id="features" class="section" data-aos="fade-up">
       <h2>Features</h2>
+      <p class="section-lead">Are you budget-conscious, feeding a family, or trying to stop impulse grocery spending? SWAK-CART helps you plan before checkout stress starts.</p>
+      <div class="quick-check" aria-label="Who SWAK-CART helps">
+        <span>Budget-conscious shopper?</span>
+        <span>Weekly grocery planner?</span>
+        <span>Student on allowance?</span>
+        <span>Family meal budget manager?</span>
+      </div>
       <div class="card-grid">
-        <article class="info-card">
+        <article class="info-card" data-aos="fade-up" data-aos-delay="40">
           <i class="fa-solid fa-wallet" aria-hidden="true"></i>
-          <h3>Track Your Budget</h3>
-          <p>See your total spending, remaining budget, and budget usage in real time.</p>
+          <h3>Track Your Spending</h3>
+          <p>See total spend, remaining budget, and usage percentage in real time while you build your cart.</p>
         </article>
 
-        <article class="info-card">
+        <article class="info-card" data-aos="fade-up" data-aos-delay="100">
           <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
-          <h3>Add Items Easily</h3>
-          <p>Choose from the product list or add your own items with your store's actual prices.</p>
+          <h3>Plan Like You Shop</h3>
+          <p>Add items from the product list or manually input what is not listed using your store's actual prices.</p>
         </article>
 
-        <article class="info-card">
+        <article class="info-card" data-aos="fade-up" data-aos-delay="160">
           <i class="fa-solid fa-lightbulb" aria-hidden="true"></i>
-          <h3>Helpful Suggestions</h3>
-          <p>Get suggestions on what to remove when over budget and what essentials to add when you still have budget.</p>
+          <h3>Smart Budget Suggestions</h3>
+          <p>Over budget? Get remove-first suggestions. Still have budget left? Get practical essentials to consider.</p>
         </article>
       </div>
     </section>
 
-    <section id="about" class="section">
+    <section id="about" class="section" data-aos="fade-up">
       <h2>What This Is For</h2>
+      <p class="section-lead">SWAK-CART is built for real grocery situations, not just perfect lists.</p>
       <div class="about-grid">
-        <article class="about-card">
+        <article class="about-card" data-aos="fade-up" data-aos-delay="40">
           <i class="fa-solid fa-people-group" aria-hidden="true"></i>
-          <p>Great for families and individuals planning weekly or monthly grocery spending.</p>
+          <h3>For Families and Solo Shoppers</h3>
+          <p>Great for planning weekly or monthly spending whether you shop for one person or a full household.</p>
         </article>
 
-        <article class="about-card">
+        <article class="about-card" data-aos="fade-up" data-aos-delay="100">
           <i class="fa-solid fa-mobile-screen-button" aria-hidden="true"></i>
-          <p>Works on desktop and mobile, so you can plan anywhere.</p>
+          <h3>Use It Anywhere</h3>
+          <p>Works on desktop and mobile so you can plan at home and update your list while you are in-store.</p>
         </article>
 
-        <article class="about-card">
+        <article class="about-card" data-aos="fade-up" data-aos-delay="160">
           <i class="fa-solid fa-cloud" aria-hidden="true"></i>
-          <p>No installation, no sign-up, and no software download needed.</p>
+          <h3>Zero Setup, Instant Start</h3>
+          <p>No install, no account, and no software download needed. Open, plan, and go.</p>
         </article>
       </div>
     </section>
 
-    <section id="how" class="section">
+    <section id="how" class="section" data-aos="fade-up">
       <h2>How It Works</h2>
       <div class="steps">
-        <article class="step-card">
+        <article class="step-card" data-aos="fade-up" data-aos-delay="40">
           <div class="step-media">
-            <img src="/images/logo.png" alt="Set your grocery budget" />
+            <img src="/images/homepage/homepage-setbudget-step1.jpg" alt="Set your grocery budget" />
             <span class="step-badge">1</span>
           </div>
           <div class="step-content">
             <h3>Set Your Budget</h3>
-            <p>Enter your budget in PHP so you can track your spending from the first item.</p>
+            <p>Start by entering your total grocery budget before adding anything to your cart. This gives you a clear spending limit right away and lets SWAK-CART calculate your remaining balance as you shop.</p>
           </div>
         </article>
 
-        <article class="step-card reverse">
+        <article class="step-card reverse" data-aos="fade-up" data-aos-delay="100">
           <div class="step-media">
-            <img src="/images/logo.png" alt="Add products with actual prices" />
+            <img src="/images/homepage/homepage-additems-step2.jpg" alt="Add products with actual prices" />
             <span class="step-badge">2</span>
           </div>
           <div class="step-content">
             <h3>Add Your Items</h3>
-            <p>Pick from the product list or add manually, then enter the actual store price and quantity.</p>
+            <p>Choose products from the catalog or manually add items that are not listed, then input the actual store price and quantity for each one. Using real prices helps you build an accurate cart that reflects what you will truly pay at checkout.</p>
           </div>
         </article>
 
-        <article class="step-card">
+        <article class="step-card" data-aos="fade-up" data-aos-delay="160">
           <div class="step-media">
-            <img src="/images/logo.png" alt="Review budget summary and suggestions" />
+            <img src="/images/homepage/homepage-reviewcart-step3.jpg" alt="Review budget summary and suggestions" />
             <span class="step-badge">3</span>
           </div>
           <div class="step-content">
             <h3>Review Your Summary</h3>
-            <p>Check total spent, remaining budget, and suggestions to keep your cart on track.</p>
+            <p>Review your total spent, remaining budget, and budget usage to see if your plan is still on track. If you are over budget, SWAK-CART suggests what you can remove first, and if you still have room, it can suggest useful essentials to add.</p>
           </div>
         </article>
 
-        <article class="step-card reverse">
+        <article class="step-card reverse" data-aos="fade-up" data-aos-delay="220">
           <div class="step-media">
-            <img src="/images/logo.png" alt="Complete cart and export receipt" />
+            <img src="/images/homepage/homepage-complete-step4.png" alt="Complete cart and export receipt" />
             <span class="step-badge">4</span>
           </div>
           <div class="step-content">
             <h3>Complete and Save</h3>
-            <p>Finalize your cart and export a clean receipt for your records.</p>
+            <p>Once your cart looks good and fits your budget, complete the session to finalize your grocery plan. You can then export a clean receipt-style summary for reference, budget tracking, or sharing with family members.</p>
           </div>
         </article>
       </div>
@@ -253,7 +264,7 @@ onBeforeUnmount(() => {
 <style scoped>
 .home-page {
   min-height: 100vh;
-  padding: clamp(1rem, 2.5vw, 2rem);
+  padding: clamp(1.2rem, 3vw, 2.4rem);
   background: #ffffff;
   color: #1f2a27;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -263,7 +274,7 @@ onBeforeUnmount(() => {
 .hero-banner,
 .section,
 .footer {
-  max-width: min(1360px, 96vw);
+  max-width: min(1280px, 96vw);
   margin: 0 auto;
 }
 
@@ -272,11 +283,12 @@ onBeforeUnmount(() => {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  padding: 0.85rem 1rem;
-  border-radius: 14px;
-  background: #ffffff;
+  padding: 0.95rem 1.2rem;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.92);
   border: 1px solid #e6ece9;
-  box-shadow: 0 8px 22px rgba(30, 56, 47, 0.07);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 12px 30px rgba(30, 56, 47, 0.09);
 }
 
 .brand {
@@ -306,15 +318,17 @@ onBeforeUnmount(() => {
 }
 
 .hero-banner {
-  margin-top: 1rem;
+  margin-top: 0;
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;
-  gap: 1rem;
-  padding: clamp(1.25rem, 3vw, 2rem);
-  border-radius: 20px;
+  gap: 1.5rem;
+  align-items: center;
+  min-height: 72vh;
+  padding: clamp(2.4rem, 5vw, 3.6rem) clamp(1.2rem, 2vw, 1.6rem);
+  border-radius: 0;
   background: #ffffff;
-  border: 1px solid #e6ece9;
-  box-shadow: 0 12px 26px rgba(30, 56, 47, 0.08);
+  border: 0;
+  box-shadow: none;
 }
 
 .eyebrow {
@@ -333,25 +347,29 @@ onBeforeUnmount(() => {
 }
 
 .hero-copy {
-  margin: 0.9rem 0 0;
-  max-width: 70ch;
+  margin: 1.1rem 0 0;
+  max-width: 62ch;
   font-size: clamp(0.98rem, 2.1vw, 1.1rem);
-  line-height: 1.6;
+  line-height: 1.75;
   color: #3f5f56;
 }
 
 .hero-media {
   display: grid;
   place-items: center;
-  border-radius: 16px;
-  border: 1px solid #e6ece9;
-  background: #fafdfb;
+  min-height: 100%;
+  padding: 0.9rem;
+  border-radius: 0;
+  border: 0;
+  background: #ffffff;
 }
 
 .hero-image {
-  width: min(230px, 70%);
+  width: min(560px, 100%);
+  max-height: 420px;
   height: auto;
-  object-fit: contain;
+  object-fit: cover;
+  border-radius: 12px;
 }
 
 .cta-row {
@@ -391,33 +409,66 @@ onBeforeUnmount(() => {
 }
 
 .section {
-  margin-top: 1rem;
-  padding: 1rem;
-  border-radius: 16px;
+  margin-top: 0;
+  min-height: 72vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(2.2rem, 5vw, 3.4rem) clamp(1.2rem, 2vw, 1.6rem);
+  border-radius: 0;
   background: #ffffff;
-  border: 1px solid #e6ece9;
-  box-shadow: 0 7px 18px rgba(30, 56, 47, 0.06);
+  border: 0;
+  box-shadow: none;
 }
 
 .section:last-of-type {
-  margin-bottom: 0.9rem;
+  margin-bottom: 0;
 }
 
 .section h2 {
-  margin: 0 0 0.8rem;
-  font-size: 1.24rem;
+  margin: 0 0 1.4rem;
+  font-size: clamp(1.45rem, 2.2vw, 1.85rem);
   color: #2f8b63;
+}
+
+.section-lead {
+  margin: -0.5rem 0 1.25rem;
+  max-width: 72ch;
+  font-size: 1.03rem;
+  line-height: 1.7;
+  color: #4c6f64;
+}
+
+.quick-check {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin: 0 0 1.25rem;
+}
+
+.quick-check span {
+  padding: 0.48rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: #2d7f5e;
+  background: #eef8f3;
+  border: 1px solid #d7ece2;
 }
 
 .card-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1rem;
+  gap: 1.2rem;
 }
 
 .info-card {
-  padding: 1rem 0.9rem;
-  border-radius: 14px;
+  padding: 1.35rem 1.1rem;
+  border-radius: 18px;
+  min-height: 240px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   background: #fbfdfc;
   border: 1px solid #ecf2ef;
   text-align: center;
@@ -451,15 +502,25 @@ onBeforeUnmount(() => {
 .about-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.75rem;
+  gap: 1rem;
 }
 
 .about-card {
-  padding: 0.55rem 0.6rem;
-  border-radius: 0;
-  background: transparent;
-  border: 0;
+  padding: 1rem 0.9rem;
+  border-radius: 16px;
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #fbfdfc;
+  border: 1px solid #ecf2ef;
   text-align: center;
+}
+
+.about-card h3 {
+  margin: 0.15rem 0 0.35rem;
+  font-size: 1.02rem;
+  color: #3b8e69;
 }
 
 .about-card p {
@@ -470,22 +531,22 @@ onBeforeUnmount(() => {
 
 .steps {
   display: grid;
-  gap: 0.95rem;
+  gap: 1.25rem;
 }
 
 .step-card {
   display: grid;
-  grid-template-columns: 210px 1fr;
+  grid-template-columns: 360px 1fr;
   gap: 1rem;
   align-items: center;
-  padding: 0.85rem;
-  border-radius: 14px;
+  padding: 1rem;
+  border-radius: 18px;
   border: 1px solid #e6ece9;
   background: #fbfdfc;
 }
 
 .step-card.reverse {
-  grid-template-columns: 1fr 210px;
+  grid-template-columns: 1fr 360px;
 }
 
 .step-card.reverse .step-media {
@@ -500,16 +561,18 @@ onBeforeUnmount(() => {
   position: relative;
   display: grid;
   place-items: center;
-  padding: 0.8rem;
-  border-radius: 12px;
+  padding: 0.55rem;
+  border-radius: 14px;
   border: 1px solid #e6ece9;
   background: #f4faf7;
 }
 
 .step-media img {
-  width: min(130px, 70%);
+  width: 100%;
+  max-height: 240px;
   height: auto;
-  object-fit: contain;
+  object-fit: cover;
+  border-radius: 10px;
 }
 
 .step-badge {
@@ -545,7 +608,22 @@ onBeforeUnmount(() => {
 
 @media (max-width: 980px) {
   .hero-banner {
+    min-height: 64vh;
     grid-template-columns: 1fr;
+  }
+
+  .section {
+    min-height: 58vh;
+  }
+
+  .step-card,
+  .step-card.reverse {
+    grid-template-columns: 1fr;
+  }
+
+  .step-card.reverse .step-media,
+  .step-card.reverse .step-content {
+    order: initial;
   }
 
   .card-grid,
@@ -570,7 +648,8 @@ onBeforeUnmount(() => {
 
   .hero-banner,
   .section {
-    padding: 1rem;
+    min-height: auto;
+    padding: 1.25rem 0.85rem;
   }
 
   .card-grid,

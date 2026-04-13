@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^7.2.0",
+    "aos": "^2.3.4",
     "driver.js": "^1.4.0",
     "jspdf": "^4.2.1",
     "jspdf-autotable": "^5.0.7",
