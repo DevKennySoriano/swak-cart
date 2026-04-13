@@ -220,7 +220,9 @@ The suggestion card appears directly below **Budget Usage** in the sidebar (when
 
 ## 🌍 Deployment
 
-The application is ready for deployment on:
+**Live URL:** [https://swak-cart.vercel.app/](https://swak-cart.vercel.app/)
+
+The application is deployed on **Vercel** and is ready for deployment on:
 
 * **Vercel** (Recommended)
 * **Netlify**
