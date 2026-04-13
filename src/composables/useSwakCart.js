@@ -114,13 +114,23 @@ export function useSwakCart() {
 				cancelButton: 'swak-btn swak-btn-cancel'
 			},
 			html: `
-				<div style="display:grid;gap:1.2rem;text-align:left;">
-					<div style="text-align:center;">
-						<img id="swal-product-image" src="${product.image}" alt="${product.name}" style="max-width:100%;max-height:180px;border-radius:10px;object-fit:cover;margin-bottom:0.8rem;">
+				<style>
+					#swal-modal-content { display: grid; gap: 1.2rem; text-align: left; }
+					#swal-modal-header { text-align: center; }
+					#swal-modal-header img { max-width: 100%; max-height: 180px; border-radius: 10px; object-fit: cover; margin-bottom: 0.8rem; }
+					#swal-modal-inputs { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+					@media (max-width: 480px) {
+						#swal-modal-inputs { grid-template-columns: 1fr; }
+						#swal-modal-header img { max-height: 140px; }
+					}
+				</style>
+				<div id="swal-modal-content">
+					<div id="swal-modal-header">
+						<img id="swal-product-image" src="${product.image}" alt="${product.name}">
 						<div style="font-weight:600;font-size:1.1rem;color:#1e6452;margin-bottom:0.3rem;">${product.name}</div>
 						<div style="font-size:0.9rem;color:#456f63;">${product.category}</div>
 					</div>
-					<div style="display:grid;grid-template-columns:1fr 1fr;gap:0.8rem;">
+					<div id="swal-modal-inputs">
 						<div>
 							<label style="display:block;font-size:0.9rem;color:#666;margin-bottom:3px;font-weight:600;">Price (PHP)</label>
 							<input id="swal-price" type="number" class="swal2-input" min="0" step="0.01" placeholder="Enter Store Actual Price" style="margin:0;font-size:1rem;">
