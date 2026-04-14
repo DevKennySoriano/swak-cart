@@ -69,11 +69,11 @@
   overflow: hidden;
   margin-top: 0;
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 1.5rem;
-  align-items: center;
-  min-height: 72vh;
-  padding: clamp(2.4rem, 5vw, 3.6rem) var(--content-gutter);
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: clamp(1rem, 2.4vw, 2rem);
+  align-items: start;
+  min-height: auto;
+  padding: clamp(1.8rem, 4vw, 3rem) var(--content-gutter) clamp(1rem, 2.2vw, 1.8rem);
   border-radius: 0;
   background: #ffffff;
   border: 0;
@@ -92,7 +92,7 @@
   width: clamp(180px, 22vw, 320px);
   height: clamp(180px, 22vw, 320px);
   right: -70px;
-  top: -85px;
+  top: clamp(14px, 3vw, 36px);
   background: linear-gradient(150deg, rgba(97, 187, 124, 0.2), rgba(87, 184, 111, 0.04));
   transform: none;
   border-radius: 50%;
@@ -111,6 +111,11 @@
 .hero-banner > * {
   position: relative;
   z-index: 1;
+}
+
+.hero-content {
+  align-self: start;
+  padding-top: clamp(0.35rem, 1vw, 0.75rem);
 }
 
 .eyebrow {
@@ -143,7 +148,7 @@
   justify-self: center;
   min-height: 0;
   align-self: start;
-  margin-top: clamp(0.6rem, 1.2vw, 1rem);
+  margin-top: clamp(0.35rem, 1vw, 0.75rem);
   padding: 0;
   border: 0;
   background: transparent;
@@ -151,7 +156,7 @@
 }
 
 .hero-image {
-  width: min(560px, 100%);
+  width: min(510px, 100%);
   max-height: none;
   height: auto;
   object-fit: contain;
@@ -472,12 +477,17 @@
 
 @media (max-width: 980px) {
   .hero-banner {
-    min-height: 64vh;
+    min-height: auto;
     grid-template-columns: 1fr;
+    padding-bottom: clamp(1.1rem, 2.5vw, 1.8rem);
+  }
+
+  .hero-content {
+    padding-top: 0;
   }
 
   .hero-media {
-    margin-top: 0;
+    margin-top: 0.45rem;
   }
 
   .section {

@@ -110,7 +110,7 @@ onBeforeUnmount(() => {
     </div>
 
     <section id="home" class="hero-banner" data-aos="fade-up">
-      <div data-aos="fade-right" data-aos-delay="80">
+      <div class="hero-content" data-aos="fade-right" data-aos-delay="80">
         <p class="eyebrow">SWAK-CART: Your Grocery Companion</p>
         <h1>Shop smarter and stay within budget.</h1>
         <p class="hero-copy">
