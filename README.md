@@ -47,6 +47,8 @@ No download required. No account required. Open and use instantly in your browse
 ## 📂 Project Structure
 
 ```
+scripts/
+├── update-git-date.js       # Generates/updates virtual git last-updated value
 public/
 ├── images/
 │   ├── logo.png              # SWAK-CART logo
@@ -73,15 +75,13 @@ src/
 │   └── useTutorial.js        # Driver.js tutorial steps and mobile tab sync behavior
 ├── styles/
 │   ├── swak-cart-core.css        # Base layout, typography, and component styling
+│   ├── swak-cart-home-page.css   # External scoped styles for HomePage.vue
 │   ├── swak-cart-overlays.css    # SweetAlert and overlay-specific styling
 │   ├── swak-cart-responsive.css  # Mobile and tablet responsive behavior
 │   ├── swak-cart-tutorial.css    # Tutorial popover and coach-mark styling
 │   └── swak-cart.css             # Style entrypoint that imports all style layers
 ├── App.vue                   # Root component (route switcher)
 └── main.js                   # Application entry point (AOS initialization)
-.vscode/
-├── extensions.json           # Recommended extensions
-└── settings.json             # Workspace editor settings
 .gitignore                    # Git ignore rules
 index.html                    # HTML entry point
 jsconfig.json                 # JavaScript project configuration
